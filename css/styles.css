@@ -1,3 +1,7 @@
+/* ====================
+   DISEÑO PRINCIPAL
+   ==================== */
+
 
 /* Fuente principal */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
@@ -279,7 +283,14 @@ a {
     font-size: 14px; /* tamaño de fuente */
 }
 
-/* Cuatro animaciones CSS */
+
+
+
+/* ====================
+   ANIMACIONES CSS
+   ==================== */
+
+
 /* Animación 1: aparición con desplazamiento hacia arriba */
 @keyframes fadeUp {
     from {
@@ -324,7 +335,190 @@ a {
     }
 }
 
+
+
+
+
+/* ====================
+   CATÁLOGO DE JUEGOS
+   ==================== */
+
+/* Cuadrícula de productos */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual */
+.product-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: cardReveal 0.7s ease both;
+}
+
+/* Animación al pasar el cursor */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Contenedor de imagen */
+.product-image {
+    height: 250px;
+    background: var(--sage);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen del juego */
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Información del producto */
+.product-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Nombre del juego */
+.product-info h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+/* Descripción */
+.product-info p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Precio y descuento */
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* Precio actual */
+.product-price {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--dark);
+}
+
+/* Contenedor de precios */
+.product-prices {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Precio original tachado */
+.old-price {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+/* Estado sin descuento */
+.product-status {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Etiqueta de descuento */
+.discount-badge {
+    background: var(--peach);
+    color: var(--dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+/* Enlace inferior de regreso */
+.back-navigation {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Ajuste de imagen de Wingspan */
+img.imagen-wingspan {
+    scale: 0.9;
+}
+
+/* Bordes redondeados para imágenes de productos */
+.product-image img {
+    border-radius: 12px;
+}
+
+
+/* Permite el efecto hover después de la animación de entrada */
+.product-card,
+.category-card {
+    animation-fill-mode: backwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ====================
+   AJUSTES RESPONSIVOS
+   ==================== */
+
 /* Diseño responsivo */
+
+
+/* Diseño para tablets */
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Diseño para celulares */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 220px;
+    }
+}
+
 
 /* Adaptación para tablets y pantallas medianas */
 @media (max-width: 900px) {
@@ -376,6 +570,13 @@ a {
         min-height: 190px; /* reduce la altura mínima */
     }
 }
+
+
+
+
+/* ====================
+   AJUSTES DE ACCESIBILIDAD
+   ==================== */
 
 /* Respeta las preferencias de accesibilidad del usuario */
 @media (prefers-reduced-motion: reduce) {
