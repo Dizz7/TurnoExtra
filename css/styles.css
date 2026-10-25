@@ -71,3 +71,318 @@ a {
 .logo-dot {
     color: var(--coral); /* color del punto */
 }
+
+
+/* Enlaces de navegación */
+.nav-links {
+    display: flex; /* distribución horizontal */
+    list-style: none; /* elimina las viñetas */
+    gap: 28px; /* espacio entre enlaces */
+    font-weight: 800; /* grosor de fuente */
+}
+
+/* Enlaces al pasar el cursor o cuando la página está activa */
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+    color: var(--coral); /* color destacado */
+}
+/* Contenedor principal de presentación */
+.hero {
+    max-width: 1200px; /* ancho máximo */
+    margin: auto; /* centrado horizontal */
+    padding: 90px 24px; /* espacio interno vertical y horizontal */
+    display: grid; /* distribución mediante CSS Grid */
+    grid-template-columns: 1.1fr 0.9fr; /* dos columnas proporcionales */
+    align-items: center; /* alineación vertical */
+    gap: 50px; /* espacio entre columnas */
+}
+
+/* Contenido de texto de la presentación */
+.hero-content {
+    animation: fadeUp 0.8s ease both; /* animación de entrada */
+}
+
+/* Texto pequeño sobre el título principal */
+.eyebrow {
+    font-size: 14px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
+    letter-spacing: 2px; /* separación entre letras */
+    color: var(--muted); /* color secundario */
+    margin-bottom: 18px; /* espacio inferior */
+}
+
+/* Título principal de la página */
+.hero h1 {
+    font-size: clamp(40px, 5vw, 70px); /* tamaño adaptable entre 40 y 70 píxeles */
+    line-height: 1.08; /* altura de línea */
+    letter-spacing: -2px; /* reduce la separación entre letras */
+    margin-bottom: 24px; /* espacio inferior */
+}
+
+/* Párrafo descriptivo de la presentación */
+.hero-content > p:not(.eyebrow) {
+    color: var(--muted); /* color secundario */
+    font-size: 18px; /* tamaño de fuente */
+    max-width: 490px; /* ancho máximo del texto */
+    margin-bottom: 30px; /* espacio inferior */
+}
+
+/* Botón principal para explorar los juegos */
+.btn-primary {
+    display: inline-block; /* permite aplicar dimensiones y espaciados */
+    background: var(--coral); /* color de fondo */
+    color: white; /* color del texto */
+    padding: 15px 28px; /* espacio interno */
+    border-radius: 40px; /* bordes redondeados */
+    font-weight: 900; /* grosor de fuente */
+    transition: transform 0.25s, background 0.25s; /* transición suave */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.btn-primary:hover {
+    background: #D95F50; /* oscurece el color de fondo */
+    transform: translateY(-4px); /* desplaza el botón hacia arriba */
+}
+
+/* Contenedor de elementos decorativos */
+.hero-visual {
+    min-height: 350px; /* altura mínima */
+    background: var(--sage); /* color de fondo */
+    border-radius: 45% 55% 55% 45%; /* forma orgánica */
+    display: flex; /* distribución flexible */
+    justify-content: center; /* centrado horizontal */
+    align-items: center; /* centrado vertical */
+    position: relative; /* referencia para elementos posicionados */
+    animation: float 5s ease-in-out infinite; /* movimiento flotante continuo */
+}
+
+/* Dado decorativo principal */
+.hero-dice {
+    font-size: 130px; /* tamaño del dado */
+    animation: rotateDice 8s ease-in-out infinite; /* rotación suave */
+}
+
+/* Estrella decorativa */
+.hero-star {
+    position: absolute; /* posicionamiento dentro del contenedor */
+    top: 30px; /* distancia desde arriba */
+    right: 45px; /* distancia desde la derecha */
+    font-size: 70px; /* tamaño de la estrella */
+    color: #E8B74E; /* color amarillo */
+}
+
+/* Pieza de juego decorativa */
+.hero-piece {
+    position: absolute; /* posicionamiento dentro del contenedor */
+    bottom: 15px; /* distancia desde abajo */
+    left: 55px; /* distancia desde la izquierda */
+    font-size: 75px; /* tamaño de la pieza */
+    color: var(--coral); /* color destacado */
+}
+
+/* Contenedor general de categorías */
+.categories {
+    max-width: 1200px; /* ancho máximo */
+    margin: auto; /* centrado horizontal */
+    padding: 30px 24px 90px; /* espacio interno */
+}
+
+/* Encabezado de la sección */
+.section-heading {
+    margin-bottom: 28px; /* separación respecto a las tarjetas */
+}
+
+/* Título de la sección */
+.section-heading h2 {
+    font-size: 32px; /* tamaño de fuente */
+    letter-spacing: -1px; /* separación entre letras */
+}
+
+/* Descripción de la sección */
+.section-heading p {
+    color: var(--muted); /* color secundario */
+}
+
+/* Cuadrícula de categorías */
+.category-grid {
+    display: grid; /* distribución mediante CSS Grid */
+    grid-template-columns: repeat(4, 1fr); /* cuatro columnas iguales */
+    gap: 18px; /* separación entre tarjetas */
+}
+
+/* Diseño general de las tarjetas */
+.category-card {
+    padding: 28px; /* espacio interno */
+    border-radius: var(--radius); /* bordes redondeados */
+    min-height: 240px; /* altura mínima */
+    display: flex; /* distribución flexible */
+    flex-direction: column; /* elementos ordenados verticalmente */
+    align-items: flex-start; /* alineación al inicio */
+    transition: transform 0.3s, box-shadow 0.3s; /* transiciones suaves */
+    animation: cardReveal 0.7s ease both; /* animación de aparición */
+}
+
+/* Efecto al pasar el cursor sobre una tarjeta */
+.category-card:hover {
+    transform: translateY(-8px); /* eleva la tarjeta */
+    box-shadow: 0 14px 30px rgba(25, 52, 45, 0.10); /* sombra suave */
+}
+
+/* Icono de cada categoría */
+.category-icon {
+    font-size: 55px; /* tamaño del icono */
+    margin-bottom: 18px; /* separación inferior */
+}
+
+/* Nombre de la categoría */
+.category-card h3 {
+    font-size: 23px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
+}
+
+/* Descripción de la categoría */
+.category-card p {
+    font-size: 14px; /* tamaño de fuente */
+    margin-top: 5px; /* separación superior */
+}
+
+/* Flecha de navegación */
+.category-arrow {
+    margin-top: auto; /* empuja la flecha hacia abajo */
+    align-self: flex-end; /* alinea la flecha a la derecha */
+    font-size: 24px; /* tamaño de la flecha */
+}
+
+/* Colores de fondo según la categoría */
+.strategy {
+    background: var(--sage); /* verde pastel */
+}
+
+.family {
+    background: var(--yellow); /* amarillo pastel */
+}
+
+.creativity {
+    background: var(--blue); /* azul pastel */
+}
+
+.party {
+    background: var(--peach); /* durazno pastel */
+}
+
+/* Estilos del pie de página */
+.footer {
+    text-align: center; /* texto centrado */
+    padding: 30px; /* espacio interno */
+    border-top: 1px solid #EDEBE5; /* línea divisoria superior */
+    color: var(--muted); /* color secundario */
+    font-size: 14px; /* tamaño de fuente */
+}
+
+/* Cuatro animaciones CSS */
+/* Animación 1: aparición con desplazamiento hacia arriba */
+@keyframes fadeUp {
+    from {
+        opacity: 0; /* elemento invisible */
+        transform: translateY(25px); /* posición inicial inferior */
+    }
+    to {
+        opacity: 1; /* elemento visible */
+        transform: translateY(0); /* posición original */
+    }
+}
+
+/* Animación 2: movimiento flotante vertical */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* posición original */
+    }
+    50% {
+        transform: translateY(-12px); /* desplazamiento hacia arriba */
+    }
+}
+
+/* Animación 3: rotación suave del dado */
+@keyframes rotateDice {
+    0%, 100% {
+        transform: rotate(-8deg); /* inclinación hacia la izquierda */
+    }
+    50% {
+        transform: rotate(8deg); /* inclinación hacia la derecha */
+    }
+}
+
+/* Animación 4: aparición progresiva de las tarjetas */
+@keyframes cardReveal {
+    from {
+        opacity: 0; /* elemento invisible */
+        transform: scale(0.94); /* tamaño inicial reducido */
+    }
+    to {
+        opacity: 1; /* elemento visible */
+        transform: scale(1); /* tamaño original */
+    }
+}
+
+/* Diseño responsivo */
+
+/* Adaptación para tablets y pantallas medianas */
+@media (max-width: 900px) {
+
+    .hero {
+        grid-template-columns: 1fr; /* una sola columna */
+        padding-top: 60px; /* reduce el espacio superior */
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* dos columnas */
+    }
+
+    .nav-links {
+        gap: 12px; /* reduce la separación entre enlaces */
+        flex-wrap: wrap; /* permite saltos de línea */
+    }
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column; /* navegación vertical */
+    }
+
+    .nav-links {
+        justify-content: center; /* centra los enlaces */
+        font-size: 13px; /* reduce el tamaño del texto */
+    }
+
+    .hero {
+        padding: 45px 20px; /* reduce los espacios internos */
+    }
+
+    .hero-visual {
+        min-height: 250px; /* reduce la altura del contenedor */
+    }
+
+    .hero-dice {
+        font-size: 90px; /* reduce el tamaño del dado */
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr; /* una tarjeta por fila */
+    }
+
+    .category-card {
+        min-height: 190px; /* reduce la altura mínima */
+    }
+}
+
+/* Respeta las preferencias de accesibilidad del usuario */
+@media (prefers-reduced-motion: reduce) {
+
+    *, *::before, *::after {
+        animation: none !important; /* desactiva animaciones */
+        transition: none !important; /* desactiva transiciones */
+        scroll-behavior: auto !important; /* desactiva desplazamiento suave */
+    }
+}
