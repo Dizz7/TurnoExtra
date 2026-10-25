@@ -215,6 +215,58 @@ a {
     gap: 18px; /* separación entre tarjetas */
 }
 
+/* Imagen representativa de cada categoría */
+.category-image {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 18px;
+}
+
+/* Collage de tres juegos en cada categoría */
+.category-collage {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: 165px;
+    margin: 0 auto 20px;
+}
+
+.category-collage img {
+    position: absolute;
+    bottom: 10px;
+    width: 54%;
+    height: 135px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(25, 52, 45, 0.15));
+}
+
+/* Caja izquierda */
+.category-collage img:nth-child(1) {
+    left: 0;
+    transform: rotate(-12deg);
+    z-index: 1;
+}
+
+/* Caja central */
+.category-collage img:nth-child(2) {
+    left: 23%;
+    bottom: 0;
+    height: 150px;
+    z-index: 3;
+}
+
+/* Caja derecha */
+.category-collage img:nth-child(3) {
+    right: 0;
+    transform: rotate(12deg);
+    z-index: 2;
+}
+
+
+
+
 /* Diseño general de las tarjetas */
 .category-card {
     padding: 28px; /* espacio interno */
