@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creatividad | Juegos de Mesa</title>
+    <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
     <header class="header">
-      <nav class="navbar" aria-label="Navegación principal">
+        <nav class="navbar" aria-label="Navegación principal">
             <a href="../index.html" class="logo">
                 <span class="logo-icon">🎲</span>
                 turnoextra<span class="logo-dot">.</span>
@@ -17,78 +18,141 @@
 
             <ul class="nav-links">
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../pages/estrategia.html">Estrategia</a></li>
-                <li><a href="../pages/familiares.html">Familiares</a></li>
-                <li><a href="../pages/creatividad.html" aria-current="page">Creatividad</a></li>
-                <li><a href="../pages/fiesta.html">Fiesta</a></li>
+                <li><a href="estrategia.html">Estrategia</a></li>
+                <li><a href="familiares.html">Familiares</a></li>
+                <li><a href="creatividad.html" aria-current="page">Creatividad</a></li>
+                <li><a href="fiesta.html">Fiesta</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+
+        <!-- Presentación de la categoría Creatividad -->
         <section class="hero">
             <div class="hero-content">
-                <p class="eyebrow">MÁS JUEGOS. MÁS HISTORIAS.</p>
+                <p class="eyebrow">IMAGINA. CREA. SORPRENDE.</p>
 
-                <h1>Tu próxima partida empieza aquí.</h1>
+                <h1>Tus ideas entran en juego.</h1>
 
                 <p>
-                    Descubre juegos de mesa para cada ocasión.
-                    Comparte, compite y vive momentos inolvidables.
+                    Descubre nuestra selección de juegos creativos.
+                    Inventa historias, dibuja lo inesperado
+                    y deja que tu imaginación guíe la partida.
                 </p>
 
-                <a href="#categorias" class="btn-primary">
-                    Explorar juegos →
+                <a href="#juegos" class="btn-primary">
+                    Ver juegos →
                 </a>
             </div>
 
-            <div class="hero-visual" aria-hidden="true">
-                <span class="hero-dice">🎲</span>
+            <div class="hero-visual creativity" aria-hidden="true">
+                <span class="hero-dice">🎨</span>
                 <span class="hero-star">✦</span>
-                <span class="hero-piece">♟</span>
+                <span class="hero-piece">✏️</span>
             </div>
         </section>
 
-        <section id="categorias" class="categories">
+        <!-- Catálogo de juegos -->
+        <section id="juegos" class="categories">
+
             <div class="section-heading">
-                <h2>Explora por categoría</h2>
-                <p>Encuentra el juego perfecto para ti.</p>
+                <h2>Juegos de creatividad</h2>
+                <p>Cada idea puede empezar una gran historia.</p>
             </div>
 
-            <div class="category-grid">
-                <a href="../pages/estrategia.html"
-                   class="category-card strategy">
-                    <span class="category-icon">♟</span>
-                    <h3>Estrategia</h3>
-                    <p>Planifica, conquista y gana.</p>
-                    <span class="category-arrow">→</span>
-                </a>
+            <div class="product-grid">
 
-                <a href="../pages/familiares.html"
-                   class="category-card family">
-                    <span class="category-icon">⭐</span>
-                    <h3>Familiares</h3>
-                    <p>Juegos para todas las edades.</p>
-                    <span class="category-arrow">→</span>
-                </a>
+                <!-- Juego 1: Story Cubes -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="../img/juegos/story-cubes.png"
+                             alt="Caja del juego Story Cubes"
+                             loading="lazy">
+                    </div>
 
-                <a href="../pages/creatividad.html"
-                   class="category-card creativity">
-                    <span class="category-icon">🎨</span>
-                    <h3>Creatividad</h3>
-                    <p>Imagina, crea y sorprende.</p>
-                    <span class="category-arrow">→</span>
-                </a>
+                    <div class="product-info">
+                        <h3>Story Cubes</h3>
 
-                <a href="../pages/fiesta.html"
-                   class="category-card party">
-                    <span class="category-icon">🎉</span>
-                    <h3>Fiesta</h3>
-                    <p>Ríe, juega y celebra.</p>
-                    <span class="category-arrow">→</span>
+                        <p>
+                            Lanza los dados y conecta sus imágenes
+                            para inventar una historia.
+                            Personajes, lugares y aventuras
+                            cobran vida con tu imaginación.
+                        </p>
+
+                        <div class="product-bottom">
+                            <span class="product-price">$12.990</span>
+                            <span class="product-status">Sin descuento</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Juego 2: Pictionary -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="../img/juegos/pictionary.png"
+                             alt="Caja del juego Pictionary"
+                             loading="lazy">
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Pictionary</h3>
+
+                        <p>
+                            Convierte palabras en dibujos y ayuda
+                            a tu equipo a adivinarlas antes
+                            de que termine el tiempo.
+                            ¡Cada trazo puede ser la pista clave!
+                        </p>
+
+                        <div class="product-bottom">
+                            <div class="product-prices">
+                                <span class="old-price">$24.990</span>
+                                <span class="product-price">$19.992</span>
+                            </div>
+
+                            <span class="discount-badge">DESCUENTO 20%</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Juego 3: Telestrations -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="../img/juegos/telestrations.png"
+                             alt="Caja del juego Telestrations"
+                             loading="lazy">
+                    </div>
+
+                    <div class="product-info">
+                        <h3>Telestrations</h3>
+
+                        <p>
+                            Dibuja, pasa tu cuaderno y descubre
+                            cómo interpretan tu idea los demás.
+                            Las palabras se transforman en dibujos
+                            y los malentendidos en risas.
+                        </p>
+
+                        <div class="product-bottom">
+                            <span class="product-price">$27.990</span>
+                            <span class="product-status">Sin descuento</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Enlace para regresar a las categorías -->
+            <div class="back-navigation">
+                <a href="../index.html#categorias" class="btn-primary">
+                    ← Volver a las categorías
                 </a>
             </div>
+
         </section>
+
     </main>
 
     <footer class="footer">
