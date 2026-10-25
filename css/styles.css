@@ -13,6 +13,7 @@
     --dark: #19342D;
     --coral: #EF7968;
     --sage: #DCE8DC;
+    --lavender: #E8DFF2;
     --yellow: #FBE9BA;
     --blue: #DCEAF6;
     --peach: #F9DED5;
@@ -259,7 +260,7 @@ a {
 
 /* Colores de fondo según la categoría */
 .strategy {
-    background: var(--sage); /* verde pastel */
+    background: var(--lavender); /* lila pastel */
 }
 
 .family {
