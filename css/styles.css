@@ -1,0 +1,73 @@
+
+/* Fuente principal */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+
+/* Paleta de Colores */
+:root {
+    --cream: #FAF8F3;
+    --dark: #19342D;
+    --coral: #EF7968;
+    --sage: #DCE8DC;
+    --yellow: #FBE9BA;
+    --blue: #DCEAF6;
+    --peach: #F9DED5;
+    --muted: #65756E;
+    --radius: 22px;
+}
+
+/* Reset de estilos y configuración global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* comportamiento de desplazamiento suave */
+}
+
+/* Estilos generales para el cuerpo y enlaces */
+body {
+    font-family: 'Nunito', sans-serif; /* fuente */
+    background: var(--cream); /* color de fondo */
+    color: var(--dark);    /* color de texto */
+    line-height: 1.6; /* altura de línea */
+}
+
+a {
+    text-decoration: none; /* sin subrayado */
+    color: inherit; /* hereda el color del texto */
+}
+
+/* Estilos para el encabezado y la barra de navegación */
+.header {
+    background: rgba(250, 248, 243, 0.95); /* color de fondo con transparencia */
+    border-bottom: 1px solid #EDEBE5; /* línea inferior */
+}
+
+.navbar {
+    max-width: 1200px; /* ancho máximo */
+    margin: auto; /* centrado horizontal */
+    padding: 22px 24px; /* espacio interno */
+    display: flex; /* diseño flexible */
+    justify-content: space-between; /* espacio entre elementos */
+    align-items: center; /* alineación vertical */
+    gap: 24px; /* espacio entre elementos */
+}
+
+
+/* Diseños del Logo */
+.logo {
+    font-size: 28px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
+    letter-spacing: -1.5px; /* espaciado entre letras */
+}
+
+.logo-icon {
+    margin-right: 8px; /* espacio a la derecha del icono */
+}
+
+.logo-dot {
+    color: var(--coral); /* color del punto */
+}
