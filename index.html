@@ -121,29 +121,33 @@
                 <p>Encuentra el juego perfecto para ti.</p>
             </div>
 
-            <div class="category-grid">
+            <!-- Cuadrícula responsiva de categorías con Bootstrap -->
+            <div class="row g-3 category-grid">
 
                 <!-- Categoría: Estrategia -->
-                <a href="pages/estrategia.html"
-                   class="category-card strategy">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="pages/estrategia.html"
+                    class="category-card strategy">
 
-                    <div class="category-collage" aria-hidden="true">
-                        <img src="img/juegos/wingspan.png"
-                             alt="Imagen de Wingspan" loading="lazy">
-                        <img src="img/juegos/catan.png"
-                             alt="Imagen de Catan" loading="lazy">
-                        <img src="img/juegos/kurruf.png"
-                             alt="Imagen de Kurruf" loading="lazy">
-                    </div>
+                        <div class="category-collage" aria-hidden="true">
+                            <img src="img/juegos/wingspan.png"
+                                alt="Imagen de Wingspan" loading="lazy">
+                            <img src="img/juegos/catan.png"
+                                alt="Imagen de Catan" loading="lazy">
+                            <img src="img/juegos/kurruf.png"
+                                alt="Imagen de Kurruf" loading="lazy">
+                        </div>
 
-                    <h3>Estrategia</h3>
-                    <p>Planifica, conquista y gana.</p>
-                    <span class="category-arrow" aria-hidden="true">→</span>
-                </a>
+                        <h3>Estrategia</h3>
+                        <p>Planifica, conquista y gana.</p>
+                        <span class="category-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
 
                 <!-- Categoría: Familiares -->
-                <a href="pages/familiares.html"
-                   class="category-card family">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="pages/familiares.html"
+                       class="category-card family">
 
                     <div class="category-collage" aria-hidden="true">
                         <img src="img/juegos/exploding-kittens.png"
@@ -158,8 +162,10 @@
                     <p>Comparte partidas en familia.</p>
                     <span class="category-arrow" aria-hidden="true">→</span>
                 </a>
+                </div>
 
                 <!-- Categoría: Creatividad -->
+                <div class="col-12 col-md-6 col-lg-3">
                 <a href="pages/creatividad.html"
                    class="category-card creativity">
 
@@ -176,8 +182,10 @@
                     <p>Imagina, crea y sorprende.</p>
                     <span class="category-arrow" aria-hidden="true">→</span>
                 </a>
+                </div>
 
                 <!-- Categoría: Fiesta -->
+                <div class="col-12 col-md-6 col-lg-3">
                 <a href="pages/fiesta.html"
                    class="category-card party">
 
@@ -194,6 +202,7 @@
                     <p>Ríe, juega y celebra.</p>
                     <span class="category-arrow" aria-hidden="true">→</span>
                 </a>
+                </div>
 
             </div>
         </section>

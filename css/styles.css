@@ -210,12 +210,7 @@ a {
     color: var(--muted); /* color secundario */
 }
 
-/* Cuadrícula de categorías */
-.category-grid {
-    display: grid; /* distribución mediante CSS Grid */
-    grid-template-columns: repeat(4, 1fr); /* cuatro columnas iguales */
-    gap: 18px; /* separación entre tarjetas */
-}
+
 
 /* Imagen representativa de cada categoría */
 .category-image {
@@ -398,13 +393,11 @@ a {
    CATÁLOGO DE JUEGOS
    ==================== */
 
-/* Cuadrícula de productos */
+/* Cuadrícula de productos gestionada por Bootstrap */
 .product-grid {
-    display: grid; /* distribución mediante CSS Grid */
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* tres columnas iguales */
-    gap: 24px; /* espacio entre tarjetas */
     max-width: 1200px; /* ancho máximo */
-    margin: 0 auto; /* centrado horizontal */
+    margin-left: auto; /* centrado horizontal */
+    margin-right: auto; /* centrado horizontal */
 }
 
 /* Tarjeta individual */
@@ -729,16 +722,12 @@ img.imagen-wingspan {
 
 /* Diseño para tablets */
 @media (max-width: 900px) {
-    .product-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* dos columnas iguales */
-    }
+
 }
 
 /* Diseño para celulares */
 @media (max-width: 600px) {
-    .product-grid {
-        grid-template-columns: 1fr; /* una sola columna */
-    }
+
 
     .product-image {
         height: 220px; /* reduce la altura del contenedor de imagen */
@@ -754,9 +743,6 @@ img.imagen-wingspan {
         padding-top: 60px; /* reduce el espacio superior */
     }
 
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr); /* dos columnas */
-    }
 
     .nav-links {
         gap: 12px; /* reduce la separación entre enlaces */
@@ -788,9 +774,7 @@ img.imagen-wingspan {
         font-size: 90px; /* reduce el tamaño del dado */
     }
 
-    .category-grid {
-        grid-template-columns: 1fr; /* una tarjeta por fila */
-    }
+
 
     .category-card {
         min-height: 190px; /* reduce la altura mínima */
