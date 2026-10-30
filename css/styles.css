@@ -624,6 +624,71 @@ img.imagen-wingspan {
 
 
 
+/* ====================
+   VALIDACIONES DEL FORMULARIO
+   ==================== */
+
+/* Mensaje de error */
+.form-message.message-error {
+    background: #ffe8e4;
+    color: #a63d32;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--coral);
+}
+
+/* Mensaje de éxito */
+.form-message.message-success {
+    background: #e2f1e6;
+    color: #246b45;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 4px solid #58a779;
+}
+
+/* Campo con error */
+.registration-form .form-control.is-invalid {
+    border-color: #dc5b5b;
+}
+
+/* Campo válido */
+.registration-form .form-control.is-valid {
+    border-color: #58a779;
+}
+
+
+/* Animación horizontal cuando hay errores en formulario */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0); /* posición original */
+    }
+
+    20%, 60% {
+        transform: translateX(-8px); /* desplazamiento hacia la izquierda */
+    }
+
+    40%, 80% {
+        transform: translateX(8px); /* desplazamiento hacia la derecha */
+    }
+}
+
+/* Activar animación mediante JavaScript */
+.registration-form .btn-primary.shake {
+    animation: shake 0.4s ease-in-out; /* aplica la animación de sacudida */
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .registration-form .btn-primary.shake {
+        animation: none; /* desactiva la animación de sacudida */
+    }
+}
+
+
+
+
+
+
 
 
 /* Adaptación para celulares */
