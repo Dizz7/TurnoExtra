@@ -141,6 +141,8 @@ a {
     border-radius: 40px; /* bordes redondeados */
     font-weight: 900; /* grosor de fuente */
     transition: transform 0.25s, background 0.25s; /* transición suave */
+    cursor: pointer; /* muestra la mano al pasar sobre el botón */
+    font-family: inherit; /* mantiene la fuente Nunito */
 }
 
 /* Efecto al pasar el cursor sobre el botón */
@@ -630,30 +632,30 @@ img.imagen-wingspan {
 
 /* Mensaje de error */
 .form-message.message-error {
-    background: #ffe8e4;
-    color: #a63d32;
-    padding: 15px 20px;
-    border-radius: 12px;
-    border-left: 4px solid var(--coral);
+    background: #ffe8e4; /* color de fondo rojo claro */
+    color: #a63d32; /* color de texto rojo oscuro */
+    padding: 15px 20px; /* espacio interno */
+    border-radius: 12px; /* bordes redondeados */
+    border-left: 4px solid var(--coral); /* borde izquierdo rojo */
 }
 
 /* Mensaje de éxito */
 .form-message.message-success {
-    background: #e2f1e6;
-    color: #246b45;
-    padding: 15px 20px;
-    border-radius: 12px;
-    border-left: 4px solid #58a779;
+    background: #e2f1e6; /* color de fondo verde claro */
+    color: #246b45; /* color de texto verde oscuro */
+    padding: 15px 20px; /* espacio interno */
+    border-radius: 12px; /* bordes redondeados */
+    border-left: 4px solid #58a779; /* borde izquierdo verde */
 }
 
 /* Campo con error */
 .registration-form .form-control.is-invalid {
-    border-color: #dc5b5b;
+    border-color: #dc5b5b; /* color rojo para indicar error */
 }
 
 /* Campo válido */
 .registration-form .form-control.is-valid {
-    border-color: #58a779;
+    border-color: #58a779; /* color verde para indicar validez */
 }
 
 
@@ -685,26 +687,27 @@ img.imagen-wingspan {
 }
 
 
-
-
-
-
-
-
-/* Adaptación para celulares */
-@media (max-width: 600px) {
-    .registration-form { /* contenedor del formulario */
-        padding: 25px 20px; /* reduce el espacio interno */
-    }
-
-    .form-actions {
-        flex-direction: column; /* los botones se apilan verticalmente */
-    }
-
-    .form-actions button {
-        width: 100%; /* los botones ocupan todo el ancho del contenedor */
-    }
+/* Lista de errores de validación */
+.form-message.message-error ul {
+    margin: 8px 0 0; /* margen superior e inferior */
+    padding-left: 22px; /* espacio a la izquierda para la viñeta */
 }
+
+/* Separación entre los errores */
+.form-message.message-error li {
+    margin-bottom: 6px; /* espacio inferior entre errores */
+}
+
+/* Evita espacio adicional después del último error */
+.form-message.message-error li:last-child {
+    margin-bottom: 0; /* elimina el margen inferior del último elemento */
+}
+
+
+
+
+
+
 
 
 
@@ -796,6 +799,22 @@ img.imagen-wingspan {
 
 
 
+/* Adaptación para celulares registro */
+@media (max-width: 600px) {
+    .registration-form { /* contenedor del formulario */
+        padding: 25px 20px; /* reduce el espacio interno */
+    }
+
+    .form-actions {
+        flex-direction: column; /* los botones se apilan verticalmente */
+    }
+
+    .form-actions button {
+        width: 100%; /* los botones ocupan todo el ancho del contenedor */
+    }
+}
+
+
 
 /* ====================
    AJUSTES DE ACCESIBILIDAD
@@ -808,5 +827,106 @@ img.imagen-wingspan {
         animation: none !important; /* desactiva animaciones */
         transition: none !important; /* desactiva transiciones */
         scroll-behavior: auto !important; /* desactiva desplazamiento suave */
+    }
+}
+
+
+
+
+
+
+
+/* ====================
+   NAVEGACIÓN RESPONSIVA CON BOOTSTRAP
+   ==================== */
+
+/* Mantener el diseño original de la barra */
+.header .navbar {
+    max-width: 1200px; /* ancho máximo */
+    margin: 0 auto; /* centrado horizontal */
+    padding: 22px 24px; /* espacio interno */
+    display: flex; /* distribución flexible */
+    flex-direction: row; /* elementos en fila */
+    justify-content: space-between; /* espacio entre elementos */
+    align-items: center; /* alineación vertical */
+}
+
+/* Mantener el logo original */
+.header .navbar-brand {
+    font-family: 'Nunito', sans-serif; /* fuente principal */
+    font-size: 28px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
+    letter-spacing: -1.5px; /* espaciado entre letras */
+    color: var(--dark); /* color del texto */
+    margin-right: 0; /* elimina margen derecho */
+}
+
+/* Color del logo al pasar el cursor */
+.header .navbar-brand:hover {
+    color: var(--dark); /* mantiene el color del texto al pasar el cursor */
+}
+
+/* Lista de navegación */
+.header .nav-links {
+    display: flex; /* distribución flexible */
+    gap: 28px; /* espacio entre enlaces */
+    margin: 0; /* elimina margen */
+    padding: 0; /* elimina padding */
+}
+
+/* Enlaces con el estilo de TurnoExtra */
+.header .nav-links .nav-link {
+    font-family: 'Nunito', sans-serif; /* fuente principal */
+    font-weight: 800; /* grosor de fuente */
+    color: var(--dark); /* color del texto */
+    padding: 0; /* elimina padding */
+}
+
+/* Enlace activo o seleccionado */
+.header .nav-links .nav-link:hover,
+.header .nav-links .nav-link[aria-current="page"] {
+    color: var(--coral); /* color destacado */
+}
+
+/* Personalizar el botón hamburguesa */
+.header .navbar-toggler {
+    border: 2px solid var(--sage); /* borde gris claro */
+    border-radius: 12px; /* bordes redondeados */
+    padding: 8px 12px; /* espacio interno */
+}
+
+/* Color del contorno al seleccionar el botón */
+.header .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(239, 121, 104, 0.15); /* sombra suave alrededor del botón */
+}
+
+/* Ajustes para tablets y celulares */
+@media (max-width: 991.98px) { /* Bootstrap breakpoint para tablets */
+
+    /* Menú desplegado ocupa una línea completa */
+    .header .navbar-collapse {
+        flex-basis: 100%; /* ocupa todo el ancho */
+        margin-top: 16px; /* espacio superior */
+    }
+
+    /* Enlaces ordenados verticalmente */
+    .header .nav-links {
+        flex-direction: column; /* elementos en columna */
+        align-items: flex-start; /* alineación al inicio */
+        gap: 0; /* elimina el espacio entre enlaces */
+        width: 100%; /* ocupa todo el ancho */
+    }
+
+    /* Área táctil de cada enlace */
+    .header .nav-links .nav-link {
+        display: block; /* ocupa toda la línea */
+        padding: 12px 8px; /* espacio interno */
+        width: 100%; /* ocupa todo el ancho */
+    }
+
+    /* Separación entre enlaces */
+    .header .nav-links .nav-item {
+        width: 100%; /* ocupa todo el ancho */
+        border-bottom: 1px solid #EDEBE5; /* línea divisoria inferior */
     }
 }
