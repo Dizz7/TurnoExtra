@@ -398,143 +398,231 @@ a {
 
 /* Cuadrícula de productos */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid; /* distribución mediante CSS Grid */
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* tres columnas iguales */
+    gap: 24px; /* espacio entre tarjetas */
+    max-width: 1200px; /* ancho máximo */
+    margin: 0 auto; /* centrado horizontal */
 }
 
 /* Tarjeta individual */
 .product-card {
-    background: white;
-    border-radius: var(--radius);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: cardReveal 0.7s ease both;
+    background: white; /* color de fondo */
+    border-radius: var(--radius); /* bordes redondeados */
+    overflow: hidden; /* evita que el contenido sobresalga */
+    display: flex; /* distribución flexible */
+    flex-direction: column; /* elementos ordenados verticalmente */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06); /* sombra suave */
+    transition: transform 0.3s, box-shadow 0.3s; /* transiciones suaves */
+    animation: cardReveal 0.7s ease both; /* animación de aparición */
 }
 
 /* Animación al pasar el cursor */
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px); /* eleva la tarjeta */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12); /* sombra más pronunciada */
 }
 
 /* Contenedor de imagen */
 .product-image {
-    height: 250px;
-    background: var(--sage);
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 250px; /* altura fija */
+    background: var(--sage); /* color de fondo */
+    padding: 25px; /* espacio interno */
+    display: flex; /* distribución flexible */
+    align-items: center; /* centrado vertical */
+    justify-content: center; /* centrado horizontal */
 }
 
 /* Imagen del juego */
 .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 100%; /* ocupa todo el ancho del contenedor */
+    height: 100%; /* ocupa toda la altura del contenedor */
+    object-fit: contain; /* mantiene la proporción de la imagen */
 }
 
 /* Información del producto */
 .product-info {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    padding: 25px; /* espacio interno */
+    display: flex; /* distribución flexible */
+    flex-direction: column; /* elementos ordenados verticalmente */
+    flex: 1; /* ocupa el espacio restante */
 }
 
 /* Nombre del juego */
 .product-info h3 {
-    font-size: 24px;
-    margin-bottom: 12px;
+    font-size: 24px; /* tamaño de fuente */
+    margin-bottom: 12px; /* espacio inferior */
 }
 
 /* Descripción */
 .product-info p {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 24px;
+    color: var(--muted); /* color secundario */
+    font-size: 15px; /* tamaño de fuente */
+    line-height: 1.6; /* altura de línea */
+    margin-bottom: 24px; /* espacio inferior */
 }
 
 /* Precio y descuento */
 .product-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: auto;
+    display: flex; /* distribución flexible */
+    justify-content: space-between; /* espacio entre elementos */
+    align-items: flex-end; /* alineación al final */
+    flex-wrap: wrap; /* permite que los elementos se ajusten a la siguiente línea */
+    gap: 10px; /* espacio entre elementos */
+    margin-top: auto; /* empuja el contenido hacia abajo */
 }
 
 /* Precio actual */
 .product-price {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--dark);
+    font-size: 22px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
+    color: var(--dark); /* color principal */
 }
 
 /* Contenedor de precios */
 .product-prices {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* distribución flexible */
+    flex-direction: column; /* elementos ordenados verticalmente */
 }
 
 /* Precio original tachado */
 .old-price {
-    font-size: 14px;
-    color: var(--muted);
-    text-decoration: line-through;
+    font-size: 14px; /* tamaño de fuente */
+    color: var(--muted); /* color secundario */
+    text-decoration: line-through; /* tachado */
 }
 
 /* Estado sin descuento */
 .product-status {
-    font-size: 12px;
-    color: var(--muted);
+    font-size: 12px; /* tamaño de fuente */
+    color: var(--muted); /* color secundario */
 }
 
 /* Etiqueta de descuento */
 .discount-badge {
-    background: var(--peach);
-    color: var(--dark);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 900;
+    background: var(--peach); /* color de fondo */
+    color: var(--dark); /* color del texto */
+    padding: 6px 12px; /* espacio interno */
+    border-radius: 20px; /* bordes redondeados */
+    font-size: 12px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
 }
 
 /* Enlace inferior de regreso */
 .back-navigation {
-    text-align: center;
-    margin-top: 50px;
+    text-align: center; /* texto centrado */
+    margin-top: 50px; /* espacio superior */
 }
 
 /* Ajuste de imagen de Wingspan */
 img.imagen-wingspan {
-    scale: 0.9;
+    scale: 0.9; /* reduce el tamaño de la imagen */
 }
 
 /* Bordes redondeados para imágenes de productos */
 .product-image img {
-    border-radius: 12px;
+    border-radius: 12px; /* bordes redondeados */
 }
 
 
 /* Permite el efecto hover después de la animación de entrada */
 .product-card,
 .category-card {
-    animation-fill-mode: backwards;
+    animation-fill-mode: backwards; /* mantiene el estado inicial de la animación */
 }
 
 
 
 
 
+
+/* ====================
+   FORMULARIO DE REGISTRO
+   ==================== */
+
+/* Contenedor principal del formulario */
+.registration-form {
+    background: white; /* color de fondo */
+    padding: 40px; /* espacio interno */
+    border-radius: var(--radius); /* bordes redondeados */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); /* sombra suave */
+    animation: fadeUp 0.8s ease both; /* animación de aparición */
+}
+
+/* Etiquetas de los campos */
+.registration-form .form-label {
+    font-weight: 800; /* grosor de fuente */
+    color: var(--dark); /* color principal */
+    margin-bottom: 8px; /* espacio inferior */
+}
+
+/* Campos de entrada */
+.registration-form .form-control {
+    border: 2px solid #e5e7eb; /* borde gris claro */
+    border-radius: 12px; /* bordes redondeados */
+    padding: 12px 15px; /* espacio interno */
+    font-family: inherit; /* hereda la fuente del contenedor */
+    color: var(--dark); /* color principal */
+}
+
+/* Efecto al seleccionar un campo */
+.registration-form .form-control:focus {
+    border-color: var(--coral); /* color del borde cuando se enfoca */
+    box-shadow: 0 0 0 3px rgba(255, 127, 107, 0.15); /* sombra suave alrededor del campo */
+}
+
+/* Indicaciones de contraseña */
+.form-hint {
+    font-size: 13px; /* tamaño de fuente */
+    color: var(--muted); /* color secundario */
+    margin-bottom: 22px; /* espacio inferior */
+}
+
+/* Mensajes de validación */
+.form-message {
+    margin-bottom: 20px; /* espacio inferior */
+    font-weight: 700; /* grosor de fuente */
+}
+
+/* Contenedor de botones */
+.form-actions {
+    display: flex; /* distribución flexible */
+    gap: 15px; /* espacio entre botones */
+    flex-wrap: wrap; /* permite que los botones se ajusten a la siguiente línea */
+}
+
+/* Botón secundario */
+.btn-secondary {
+    background: var(--sage); /* color de fondo */
+    color: var(--dark); /* color del texto */
+    border: none; /* sin borde */
+    padding: 12px 24px; /* espacio interno */
+    border-radius: 12px; /* bordes redondeados */
+    font-weight: 800; /* grosor de fuente */
+    cursor: pointer; /* cursor de mano al pasar el ratón */
+    transition: transform 0.3s, background 0.3s; /* transiciones suaves */
+}
+
+.btn-secondary:hover {
+    background: var(--yellow); /* color de fondo al pasar el cursor */
+    color: var(--dark); /* color del texto al pasar el cursor */
+    transform: translateY(-3px); /* eleva el botón al pasar el cursor */
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+    .registration-form { /* contenedor del formulario */
+        padding: 25px 20px; /* reduce el espacio interno */
+    }
+
+    .form-actions {
+        flex-direction: column; /* los botones se apilan verticalmente */
+    }
+
+    .form-actions button {
+        width: 100%; /* los botones ocupan todo el ancho del contenedor */
+    }
+}
 
 
 
@@ -557,18 +645,18 @@ img.imagen-wingspan {
 /* Diseño para tablets */
 @media (max-width: 900px) {
     .product-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* dos columnas iguales */
     }
 }
 
 /* Diseño para celulares */
 @media (max-width: 600px) {
     .product-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* una sola columna */
     }
 
     .product-image {
-        height: 220px;
+        height: 220px; /* reduce la altura del contenedor de imagen */
     }
 }
 
