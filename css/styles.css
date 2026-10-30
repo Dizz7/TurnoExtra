@@ -609,6 +609,23 @@ img.imagen-wingspan {
     transform: translateY(-3px); /* eleva el botón al pasar el cursor */
 }
 
+
+/* Ajustes específicos para el botón primario del formulario de registro */
+.registration-form .btn-primary {
+    border: none;          /* Elimina el borde oscuro */
+    box-shadow: none;      /* Elimina la sombra del botón */
+    border-radius: 50px;   /* Mantiene la forma redondeada */
+}
+
+.registration-form .btn-primary:hover {
+    transform: translateY(-3px); /* Eleva el botón al pasar el cursor */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.10); /* Agrega una sombra suave al pasar el cursor */
+}
+
+
+
+
+
 /* Adaptación para celulares */
 @media (max-width: 600px) {
     .registration-form { /* contenedor del formulario */
