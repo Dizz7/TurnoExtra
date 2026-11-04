@@ -107,6 +107,18 @@ const TurnoExtraSesion = {
             '[data-session="admin"]'
         );
 
+        // Enlaces exclusivos del cliente
+        const clientLinks = document.querySelectorAll(
+            '[data-session="cliente"]'
+        );
+
+        clientLinks.forEach((element) => {
+            element.classList.toggle(
+                "d-none",
+                !this.tieneRol("cliente")
+            );
+        });
+
         // Botones para cerrar sesión
         const logoutButtons = document.querySelectorAll(
             '[data-session="logout"]'
