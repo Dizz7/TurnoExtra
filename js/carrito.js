@@ -83,30 +83,70 @@ const TurnoExtraCarrito = {
         }
     ],
 
-    // Obtener el carrito guardado
+    // Leer también los carritos creados antes de incorporar el historial
+    leerEstado() {
+        const datos = JSON.parse(localStorage.getItem(this.storageKey) ?? "[]");
+        if (Array.isArray(datos)) {
+            return { carrito: datos, compras: [] };
+        }
+        if (!datos || !Array.isArray(datos.carrito) || !Array.isArray(datos.compras)) {
+            throw new Error("Los datos del carrito no tienen un formato válido.");
+        }
+        return datos;
+    },
+
     obtenerCarrito() {
         try {
-            const savedCart = localStorage.getItem(this.storageKey);
-
-            if (!savedCart) {
-                return [];
-            }
-
-            const cart = JSON.parse(savedCart);
-
-            return Array.isArray(cart) ? cart : [];
+            return this.leerEstado().carrito;
         } catch (error) {
             console.warn("No se pudo cargar el carrito.", error);
             return [];
         }
     },
 
-    // Guardar el carrito en el navegador
+    // Conservar las compras anteriores al modificar el carrito
     guardarCarrito(cart) {
-        localStorage.setItem(
-            this.storageKey,
-            JSON.stringify(cart)
-        );
+        const estado = this.leerEstado();
+        estado.carrito = cart;
+        localStorage.setItem(this.storageKey, JSON.stringify(estado));
+    },
+
+    // Guardar los precios de la compra y vaciar el carrito en una sola escritura
+    confirmarCompra(carritoRevisado) {
+        const sesion = TurnoExtraSesion.obtenerSesion();
+        const estado = this.leerEstado();
+        if (sesion?.role !== "cliente" || !estado.carrito.length ||
+            JSON.stringify(estado.carrito) !== carritoRevisado) {
+            return false;
+        }
+
+        const juegos = estado.carrito.map(({ id, cantidad }) => {
+            const producto = this.productos.find((juego) => juego.id === id);
+            if (!producto || !Number.isSafeInteger(cantidad) || cantidad < 1) {
+                throw new Error("Hay un juego o una cantidad inválida en el carrito.");
+            }
+            return { nombre: producto.nombre, precio: producto.precio, cantidad };
+        });
+
+        estado.compras.unshift({
+            cliente: sesion.email.trim().toLowerCase(),
+            fecha: new Date().toISOString(),
+            juegos,
+            total: juegos.reduce((suma, juego) => suma + juego.precio * juego.cantidad, 0)
+        });
+        estado.carrito = [];
+        localStorage.setItem(this.storageKey, JSON.stringify(estado));
+        return true;
+    },
+
+    // Consultar las compras del cliente que inició sesión
+    obtenerCompras() {
+        const sesion = TurnoExtraSesion.obtenerSesion();
+        if (sesion?.role !== "cliente") {
+            return [];
+        }
+        const email = sesion.email.trim().toLowerCase();
+        return this.leerEstado().compras.filter((compra) => compra.cliente === email);
     },
 
     // Agregar un producto al carrito

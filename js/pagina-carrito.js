@@ -101,14 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (carritoRevisado !== JSON.stringify(carrito.obtenerCarrito())) {
-            window.location.reload();
-            return;
-        }
-
         dialogo.close();
         try {
-            carrito.guardarCarrito([]);
+            if (!carrito.confirmarCompra(carritoRevisado)) {
+                window.location.reload();
+                return;
+            }
         } catch (error) {
             errorCompra.textContent = "No se pudo completar la compra. Vuelve a intentarlo.";
             return;

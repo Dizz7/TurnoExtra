@@ -129,6 +129,9 @@
                 <a href="#perfil" class="btn-primary">
                     Editar mi perfil →
                 </a>
+                <a href="#historial" data-session="cliente" class="btn-secondary d-none">
+                    Historial de compras
+                </a>
             </div>
 
             <div class="hero-visual family" aria-hidden="true">
@@ -253,6 +256,24 @@
             </div>
         </section>
 
+        <!-- Compras confirmadas del cliente, desde la más reciente -->
+        <section id="historial" data-session="cliente" class="categories d-none">
+            <div class="section-heading">
+                <h2>Historial de compras</h2>
+                <p>Revisa los juegos y los precios de cada compra confirmada.</p>
+            </div>
+            <p id="history-message" class="text-center" role="status"></p>
+            <div id="history-orders" class="d-grid gap-3"></div>
+
+            <template id="history-order">
+                <details class="bg-white border rounded-4 p-3">
+                    <summary class="fw-bold">
+                        <time></time> · <span class="order-total"></span>
+                    </summary>
+                    <ul class="list-group list-group-flush mt-2"></ul>
+                </details>
+            </template>
+        </section>
     </main>
 
 
@@ -265,6 +286,12 @@
 
     <!-- Validación de inicio de sesión -->
     <script src="../js/sesion.js" defer></script>
+
+    <!-- Consulta de compras guardadas y formato de precios -->
+    <script src="../js/carrito.js" defer></script>
+
+    <!-- Historial del cliente -->
+    <script src="../js/historial.js" defer></script>
 
     <!-- Validaciones y modificación del perfil -->
     <script src="../js/perfil.js" defer></script>
