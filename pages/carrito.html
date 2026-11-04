@@ -146,8 +146,28 @@
             <div class="cart-summary">
                 <a class="text-decoration-underline" href="../index.html">Seguir explorando juegos</a>
                 <p class="m-0" aria-live="polite">Total del carrito <strong id="cart-total"></strong></p>
+                <button id="checkout" type="button" class="btn-primary">Finalizar compra</button>
             </div>
         </div>
+
+        <!-- Revisión final antes de vaciar el carrito -->
+        <dialog id="checkout-dialog" class="border-0 rounded-4 p-4 shadow m-auto"
+                aria-labelledby="checkout-title" aria-describedby="checkout-summary">
+            <h2 id="checkout-title" class="h4 fw-bold">Confirmar compra simulada</h2>
+            <p id="checkout-summary"></p>
+            <form method="dialog" class="d-flex flex-wrap gap-2">
+                <button type="submit" class="btn-secondary" autofocus>Volver al carrito</button>
+                <button type="button" id="confirm-order" class="btn-primary">Confirmar compra</button>
+            </form>
+        </dialog>
+
+        <!-- Resultado de la compra simulada -->
+        <section id="order-success" class="cart-panel text-center p-5" hidden>
+            <h2 id="order-title" class="h4 fw-bold" tabindex="-1">¡Compra simulada confirmada!</h2>
+            <p id="order-summary"></p>
+            <a class="btn-primary" href="../index.html">Seguir explorando juegos</a>
+        </section>
+        <p id="checkout-error" role="alert" class="text-danger mt-3"></p>
 
         <!-- Fila que se completa para cada juego del carrito -->
         <template id="cart-row">

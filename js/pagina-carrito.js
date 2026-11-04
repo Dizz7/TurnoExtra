@@ -1,6 +1,6 @@
 /*
     Vista del carrito de compras de TurnoExtra.
-    Presentación de juegos, actualización de cantidades y eliminación de productos.
+    Gestión de cantidades y confirmación de la compra simulada.
 */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -73,6 +73,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
         filas.appendChild(fila);
     }
+
+    const dialogo = document.getElementById("checkout-dialog");
+    const resumenCompra = document.getElementById("checkout-summary");
+    const errorCompra = document.getElementById("checkout-error");
+    let carritoRevisado;
+
+    // Revisar el número de unidades y el importe antes de confirmar
+    document.getElementById("checkout").addEventListener("click", () => {
+        const unidades = carrito.contarProductos();
+        if (!unidades) {
+            window.location.reload();
+            return;
+        }
+
+        carritoRevisado = JSON.stringify(carrito.obtenerCarrito());
+        const importe = carrito.formatearPrecio(carrito.calcularTotal());
+        const etiqueta = unidades === 1 ? "unidad" : "unidades";
+        resumenCompra.textContent = `${unidades} ${etiqueta} por un total de ${importe}.`;
+        errorCompra.textContent = "";
+        dialogo.showModal();
+    });
+
+    // Completar la simulación solo si el carrito sigue siendo el que se revisó
+    document.getElementById("confirm-order").addEventListener("click", () => {
+        if (!dialogo.open || !TurnoExtraSesion.protegerPagina("cliente")) {
+            return;
+        }
+
+        if (carritoRevisado !== JSON.stringify(carrito.obtenerCarrito())) {
+            window.location.reload();
+            return;
+        }
+
+        dialogo.close();
+        try {
+            carrito.guardarCarrito([]);
+        } catch (error) {
+            errorCompra.textContent = "No se pudo completar la compra. Vuelve a intentarlo.";
+            return;
+        }
+
+        filas.replaceChildren();
+        actualizarResumen();
+        mensajeVacio.hidden = true;
+        document.getElementById("order-summary").textContent = resumenCompra.textContent;
+        document.getElementById("order-success").hidden = false;
+        document.getElementById("order-title").focus();
+    });
 
     // Cargar los productos al entrar a la página
     carrito.obtenerCarrito().forEach((item) => {

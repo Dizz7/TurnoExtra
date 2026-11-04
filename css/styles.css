@@ -1078,6 +1078,11 @@ img.imagen-wingspan {
     display: none; /* en escritorio los títulos ya están en el encabezado */
 }
 
+/* Botones para finalizar y confirmar la compra */
+.cart-page button.btn-primary {
+    border: 0; /* elimina el borde en relieve del botón nativo */
+}
+
 /* Franja inferior con el acceso al catálogo y el total de la compra */
 .cart-page .cart-summary {
     display: flex; /* coloca el enlace y el total en la misma franja */
