@@ -4,11 +4,13 @@ Sitio web de un catálogo de juegos de mesa, desarrollado con HTML5, CSS3, Boots
 
 El proyecto comenzó en la Semana 1 con el desarrollo de la interfaz gráfica y fue ampliado durante la Semana 2 para incorporar diseño responsivo mediante Bootstrap 5, un formulario de registro, validaciones con JavaScript y manipulación dinámica del DOM.
 
+En la Semana 3 se implementó la compra simulada de juegos y se incorporó un panel de administración para gestionar el catálogo, las existencias y las cuentas de la tienda.
+
 ## Datos de la actividad
 
 - **Estudiante:** Daniel Alarcón
 - **Asignatura:** Desarrollo Full Stack II (DSY2202)
-- **Actividad:** Experiencia 1 — Semana 2 — Actividad Formativa 2
+- **Actividad:** Experiencia 1 — Semana 3 — Entrega sumativa
 - **Proyecto:** TurnoExtra
 
 ## Descripción
@@ -27,7 +29,7 @@ Durante la Semana 2 se incorporó una página de registro de usuarios con valida
 
 ## Categorías y juegos
 
-| Categoría | Juegos |
+| Categoría | Juegos iniciales |
 |---|---|
 | Estrategia | Wingspan, Kurrüf y Catan |
 | Familiares | Exploding Kittens, Dobble y Sushi Go! |
@@ -46,7 +48,7 @@ Los precios y descuentos se utilizan con fines demostrativos para esta actividad
 - **Trello:** organización y seguimiento de tareas.
 - **Google Fonts:** tipografía Nunito.
 
-El proyecto funciona como un sitio web estático, sin backend ni base de datos. Bootstrap se incorpora mediante CDN y JavaScript se utiliza para las validaciones del formulario.
+El proyecto funciona como un sitio web estático y carga Bootstrap mediante CDN. JavaScript utiliza `sessionStorage` para mantener la sesión de la pestaña y `localStorage` para conservar las cuentas, los perfiles, el catálogo, el inventario, el carrito y las compras en el navegador.
 
 ## Características del sitio
 
@@ -127,7 +129,29 @@ También se incorporó una animación `shake` al botón Crear cuenta cuando el f
 
 #### Alcance del registro
 
-El formulario realiza validaciones del lado del cliente con fines académicos. No crea cuentas reales ni almacena contraseñas o información personal en una base de datos.
+En la Semana 2, el registro comprobaba los campos y mostraba el resultado. En la Semana 3 se conectó este formulario con las cuentas locales de la tienda.
+
+### Semana 3 — Compra simulada y administración de la tienda
+
+#### Cuentas, sesiones y perfil
+
+- El registro crea una cuenta de cliente y comprueba que el correo de acceso esté disponible.
+- El menú cambia según la sesión. Los visitantes pueden registrarse e iniciar sesión, los clientes acceden al carrito y los administradores acceden al panel. Ambos roles pueden editar su perfil y cerrar sesión.
+- Cada cuenta tiene su propio perfil. El correo de contacto se puede modificar y el correo de acceso mantiene la asociación con las compras.
+- La recuperación de contraseña muestra una confirmación simulada. Las contraseñas de las cuentas nuevas se verifican mediante una huella derivada con PBKDF2.
+
+#### Carrito, confirmación e historial de compras
+
+- Las cuatro categorías muestran los juegos del catálogo compartido, sus precios y descuentos. Los productos agotados se identifican en la ficha.
+- El cliente puede agregar juegos, ajustar cantidades y eliminar productos. El carrito muestra las portadas, los precios unitarios, los subtotales y el total en pesos chilenos.
+- **Finalizar compra** muestra las unidades y el importe para revisión. Volver al carrito conserva la selección. **Confirmar compra** registra el pedido, descuenta las existencias y vacía el carrito.
+- En **Mi perfil → Historial de compras**, el cliente puede desplegar sus pedidos desde el más reciente y consultar la fecha, los juegos, las cantidades y los precios que pagó.
+
+#### Panel de administración
+
+- **Productos.** Permite agregar, editar y eliminar juegos, asignar su categoría y definir la portada, la descripción y los precios. Los cambios se reflejan en la tienda y el carrito.
+- **Inventario.** Permite consultar y ajustar las unidades de cada juego. El catálogo inicial parte con 10 unidades por juego y los productos nuevos parten con 0. El carrito comprueba la disponibilidad antes de completar la compra.
+- **Usuarios y clientes.** Permite buscar cuentas por nombre o correo, cambiar roles y activar o desactivar el acceso. Un cambio de permisos invalida la sesión anterior. El administrador conserva los permisos de su propia cuenta.
 
 ## Estructura del proyecto
 
@@ -138,7 +162,18 @@ El formulario realiza validaciones del lado del cliente con fines académicos. N
 ├── css/
 │   └── styles.css
 ├── js/
-│   └── registro.js
+│   ├── admin-cuentas.js
+│   ├── admin.js
+│   ├── carrito.js
+│   ├── categoria.js
+│   ├── cuentas.js
+│   ├── historial.js
+│   ├── login.js
+│   ├── pagina-carrito.js
+│   ├── perfil.js
+│   ├── recuperar.js
+│   ├── registro.js
+│   └── sesion.js
 ├── img/
 │   ├── favicon.svg
 │   └── juegos/
@@ -155,10 +190,15 @@ El formulario realiza validaciones del lado del cliente con fines académicos. N
 │       ├── dixit.png
 │       └── just-one.png
 └── pages/
+    ├── admin.html
+    ├── carrito.html
+    ├── creatividad.html
     ├── estrategia.html
     ├── familiares.html
-    ├── creatividad.html
     ├── fiesta.html
+    ├── login.html
+    ├── perfil.html
+    ├── recuperar.html
     └── registro.html
 ```
 
@@ -167,12 +207,16 @@ Las imágenes de `img/juegos/` se reutilizan tanto en las fichas de productos co
 ## Cómo visualizar el proyecto
 
 1. Descargar y descomprimir el proyecto, o clonar el repositorio.
-2. Abrir `index.html` en un navegador.
-3. Utilizar el menú o las tarjetas de Inicio para recorrer las categorías.
-4. Seleccionar Registro para acceder al formulario.
-5. Completar los campos y utilizar Crear cuenta para comprobar las validaciones.
+2. Abrir la carpeta en Visual Studio Code y utilizar Live Server para visualizar `index.html` desde localhost.
+3. Recorrer las categorías como visitante o utilizar **Registro** para crear un cliente.
+4. Iniciar sesión desde el menú. Para probar ambos recorridos se incluyen estas cuentas de demostración.
 
-También se puede abrir el proyecto desde Visual Studio Code con la extensión Live Server.
+| Rol | Correo de acceso | Contraseña |
+|---|---|---|
+| Cliente | `cliente@turnoextra.cl` | `Cliente123!` |
+| Administrador | `admin@turnoextra.cl` | `Admin123!` |
+
+Utilizar el mismo navegador y la misma dirección local durante las pruebas para conservar los datos entre sesiones.
 
 No requiere instalación de dependencias ni un proceso de compilación. Se recomienda disponer de conexión a Internet para cargar Bootstrap 5 y la fuente Nunito desde sus respectivos servicios CDN.
 
@@ -201,6 +245,17 @@ Las comprobaciones contemplan:
 - Visualización de mensajes de error y confirmación.
 - Funcionamiento del botón Limpiar formulario.
 
+### Comprobaciones de la Semana 3
+
+| Recorrido | Resultado esperado |
+|---|---|
+| Registrar un cliente e iniciar sesión | El cliente puede abrir su perfil y el carrito. Si intenta entrar al panel, vuelve a Inicio. |
+| Agregar juegos de dos categorías, cambiar cantidades y recargar | El carrito conserva los juegos y calcula los subtotales con los precios de venta. |
+| Cancelar una compra y luego confirmarla | Al cancelar se conservan el carrito y el stock. Al confirmar se descuenta el stock y el pedido aparece en el historial del cliente. |
+| Crear un juego desde Administración y asignarle una unidad | El juego aparece en su categoría. Tras comprar la última unidad, la ficha indica que está agotado. |
+| Cambiar el precio de un juego ya comprado | El catálogo muestra el nuevo precio y el historial conserva el importe de la compra. |
+| Desactivar y reactivar una cuenta de prueba | La cuenta pierde el acceso al desactivarla y puede volver a iniciar sesión al reactivarla. |
+
 ## Organización del trabajo
 
 El código se administra mediante Git y GitHub. Las tareas de desarrollo se organizan en Trello utilizando los estados solicitados:
@@ -212,6 +267,8 @@ El código se administra mediante Git y GitHub. Las tareas de desarrollo se orga
 - Terminado.
 
 Durante la Semana 2 se continuó utilizando el mismo repositorio y tablero de la Semana 1, registrando los cambios asociados a Bootstrap, JavaScript, el formulario y las pruebas de responsividad.
+
+Durante la Semana 3 se organizaron las tareas de sesiones, compras y administración en el mismo tablero, junto con las pruebas funcionales y responsivas y la preparación de la entrega.
 
 ## Recursos gráficos y créditos
 
@@ -234,4 +291,4 @@ Se incluyen los enlaces en AVA.
 - **Repositorio GitHub** 
 - **Tablero Trello**
 
-La entrega de la Semana 2 incluye el proyecto completo en formato ZIP, junto con los enlaces al repositorio GitHub y al tablero Trello.
+Para la entrega de la Semana 3 se prepara el proyecto actualizado en formato ZIP y se graba la presentación de la sumativa en Kaltura.
