@@ -35,35 +35,82 @@
 
             <div class="collapse navbar-collapse" id="menuPrincipal">
                 <ul class="navbar-nav nav-links ms-auto">
+
+                    <!-- Enlaces generales -->
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Inicio</a>
+                        <a class="nav-link" href="../index.html">
+                            Inicio
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="estrategia.html">Estrategia</a>
+                        <a class="nav-link" href="estrategia.html">
+                            Estrategia
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="familiares.html">Familiares</a>
+                        <a class="nav-link" href="familiares.html">
+                            Familiares
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="creatividad.html">Creatividad</a>
+                        <a class="nav-link" href="creatividad.html">
+                            Creatividad
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="fiesta.html">Fiesta</a>
+                        <a class="nav-link" href="fiesta.html">
+                            Fiesta
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="registro.html">Registro</a>
+
+                    <!-- Opciones para visitantes -->
+                    <li class="nav-item" data-session="guest">
+                        <a class="nav-link" href="registro.html">
+                            Registro
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html" aria-current="page">
+
+                    <li class="nav-item" data-session="guest">
+                        <a class="nav-link"
+                           href="login.html"
+                           aria-current="page">
                             Iniciar sesión
                         </a>
                     </li>
+
+                    <!-- Opciones para usuarios autenticados -->
+                    <li class="nav-item d-none" data-session="profile">
+                        <a class="nav-link" href="perfil.html">
+                            Mi perfil
+                        </a>
+                    </li>
+
+                    <!-- Opción exclusiva del administrador -->
+                    <li class="nav-item d-none" data-session="admin">
+                        <a class="nav-link" href="admin.html">
+                            Administración
+                        </a>
+                    </li>
+
+                    <!-- Cerrar sesión -->
+                    <li class="nav-item d-none" data-session="logout">
+                        <button type="button"
+                                class="nav-link session-logout">
+                            Cerrar sesión
+                        </button>
+                    </li>
+
                 </ul>
             </div>
         </nav>
     </header>
 
     <main>
+
         <!-- Presentación -->
         <section class="hero">
             <div class="hero-content">
@@ -165,9 +212,15 @@
                         <!-- Cuentas ficticias para la evaluación -->
                         <div class="demo-accounts">
                             <h3>Cuentas de demostración</h3>
-                            <p>Utiliza estas cuentas ficticias para probar el acceso.</p>
+
+                            <p>
+                                Utiliza estas cuentas ficticias
+                                para probar el acceso.
+                            </p>
 
                             <div class="row g-3">
+
+                                <!-- Cuenta cliente -->
                                 <div class="col-12 col-md-6">
                                     <div class="demo-account">
                                         <strong>👤 Cliente</strong>
@@ -176,6 +229,7 @@
                                     </div>
                                 </div>
 
+                                <!-- Cuenta administrador -->
                                 <div class="col-12 col-md-6">
                                     <div class="demo-account">
                                         <strong>🛠️ Administrador</strong>
@@ -183,6 +237,7 @@
                                         <code>Admin123!</code>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
@@ -190,6 +245,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="footer">
@@ -199,7 +255,11 @@
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Gestión de sesiones simuladas -->
+    <script src="../js/sesion.js" defer></script>
+
     <!-- Validación del inicio de sesión -->
     <script src="../js/login.js" defer></script>
+
 </body>
 </html>
