@@ -1,4 +1,3 @@
-
 /*
     Inicio de sesión simulado de TurnoExtra.
     Validaciones y manipulación del DOM.
