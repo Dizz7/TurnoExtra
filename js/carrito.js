@@ -26,6 +26,60 @@ const TurnoExtraCarrito = {
             nombre: "Catan",
             precio: 39990,
             imagen: "../img/juegos/catan.png"
+        },
+        {
+            id: "exploding-kittens",
+            nombre: "Exploding Kittens",
+            precio: 19990,
+            imagen: "../img/juegos/exploding-kittens.png"
+        },
+        {
+            id: "dobble",
+            nombre: "Dobble",
+            precio: 11992,
+            imagen: "../img/juegos/dobble.png"
+        },
+        {
+            id: "sushi-go",
+            nombre: "Sushi Go!",
+            precio: 16990,
+            imagen: "../img/juegos/sushi-go.png"
+        },
+        {
+            id: "story-cubes",
+            nombre: "Story Cubes",
+            precio: 12990,
+            imagen: "../img/juegos/story-cubes.png"
+        },
+        {
+            id: "pictionary",
+            nombre: "Pictionary",
+            precio: 19992,
+            imagen: "../img/juegos/pictionary.png"
+        },
+        {
+            id: "telestrations",
+            nombre: "Telestrations",
+            precio: 27990,
+            imagen: "../img/juegos/telestrations.png"
+        },
+        {
+            id: "dixit",
+            nombre: "Dixit",
+            precio: 29990,
+            imagen: "../img/juegos/dixit.png"
+        },
+        {
+            id: "codigo-secreto",
+            nombre: "Código Secreto",
+            precio: 19992,
+            imagen: "../img/juegos/codigo-secreto.png"
+        },
+        {
+            id: "just-one",
+            nombre: "Just One",
+            precio: 21990,
+            imagen: "../img/juegos/just-one.png"
         }
     ],
 
