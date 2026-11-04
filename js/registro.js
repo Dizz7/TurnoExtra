@@ -151,6 +151,59 @@ document.addEventListener("DOMContentLoaded", () => {
         return age;
     }
 
+
+
+    // Validar un campo individual durante la interacción
+    function validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+
+        if (field !== address && value === "") {
+            isValid = false;
+        } else if (field === email) {
+            isValid = emailRegex.test(value);
+        } else if (field === password) {
+            isValid =
+                value.length >= 6 &&
+                value.length <= 18 &&
+                uppercaseRegex.test(value) &&
+                numberRegex.test(value);
+        } else if (field === confirmPassword) {
+            isValid =
+                value !== "" &&
+                value === password.value;
+        } else if (field === birthDate) {
+            const selectedDate = new Date(`${value}T12:00:00`);
+            const [year, month, day] = value.split("-").map(Number);
+
+            isValid =
+                !Number.isNaN(selectedDate.getTime()) &&
+                selectedDate.getFullYear() === year &&
+                selectedDate.getMonth() + 1 === month &&
+                selectedDate.getDate() === day &&
+                selectedDate <= new Date() &&
+                calculateAge(value) >= 13;
+        }
+
+        // La dirección es opcional
+        if (field === address && value === "") {
+            field.classList.remove("is-valid", "is-invalid");
+            field.removeAttribute("aria-invalid");
+            return true;
+        }
+
+        if (isValid) {
+            markValid(field);
+        } else {
+            markInvalid(field);
+        }
+
+        return isValid;
+    }
+
+
+
+
     /*
         Validar todos los datos cuando se
         intenta enviar el formulario.
@@ -302,6 +355,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return isValid;
     }
+
+
+
+    // Validar campos cuando el usuario sale de ellos
+    fields.forEach((field) => {
+        field.addEventListener("blur", () => {
+            validateField(field);
+        });
+    });
+
+    // Validar la contraseña mientras se escribe
+    password.addEventListener("input", () => {
+        validateField(password);
+
+        // Actualizar la confirmación si ya fue ingresada
+        if (confirmPassword.value !== "") {
+            validateField(confirmPassword);
+        }
+    });
+
+    // Validar la confirmación mientras se escribe
+    confirmPassword.addEventListener("input", () => {
+        if (confirmPassword.value !== "") {
+            validateField(confirmPassword);
+        }
+    });
+
+
+
 
     /*
         Evento submit:
