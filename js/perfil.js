@@ -5,6 +5,15 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Impedir que visitantes accedan al perfil
+    if (!TurnoExtraSesion.protegerPagina()) {
+        return;
+    }
+
+    // Mostrar el contenido solamente si el acceso es válido
+    document.getElementById("protected-content")
+        .classList.remove("d-none");
+
     // Elementos del formulario
     const form = document.getElementById("profile-form");
     const fullName = document.getElementById("profile-name");

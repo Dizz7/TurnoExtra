@@ -57,6 +57,30 @@ const TurnoExtraSesion = {
         return session !== null && session.role === role;
     },
 
+
+
+    // Controlar el acceso a páginas según la sesión y el rol
+    protegerPagina(requiredRole = null) {
+        const session = this.obtenerSesion();
+
+        // Si no existe una sesión, solicitar inicio de sesión
+        if (!session) {
+            window.location.replace("login.html");
+            return false;
+        }
+
+        // Si se exige un rol y el usuario no lo tiene
+        if (requiredRole && session.role !== requiredRole) {
+            window.location.replace("../index.html");
+            return false;
+        }
+
+        // El usuario puede acceder
+        return true;
+    },
+
+
+
     // Cerrar la sesión
     cerrarSesion() {
         sessionStorage.removeItem(this.storageKey);
