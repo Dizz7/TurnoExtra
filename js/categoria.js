@@ -19,7 +19,14 @@ for (const juego of juegosPublicados) {
     ficha.querySelector("h3").textContent = juego.nombre;
     ficha.querySelector("p").textContent = juego.descripcion;
     ficha.querySelector(".product-price").textContent = TurnoExtraCarrito.formatearPrecio(juego.precio);
-    ficha.querySelector("button").dataset.productId = juego.id;
+    const boton = ficha.querySelector("button");
+    boton.dataset.productId = juego.id;
+    if (juego.stock === 0) {
+        boton.disabled = true;
+        boton.textContent = "Agotado";
+    } else {
+        boton.title = `Unidades disponibles: ${juego.stock}`;
+    }
 
     const etiqueta = ficha.querySelector(".product-status");
     if (juego.anterior > juego.precio) {

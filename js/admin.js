@@ -16,6 +16,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensaje = document.getElementById("product-message");
     const agregar = document.getElementById("new-product");
     let original = null;
+    const selectorStock = document.getElementById("stock-product");
+    const unidadesStock = document.getElementById("stock-units");
+    const avisoStock = document.getElementById("stock-message");
+    let stockConsultado;
+
+    // Conservar el juego seleccionado al actualizar el catálogo
+    function mostrarInventario(productos) {
+        const seleccionado = selectorStock.value;
+        selectorStock.replaceChildren();
+        for (const producto of productos) {
+            const opcion = new Option(producto.nombre, producto.id);
+            opcion.selected = producto.id === seleccionado;
+            selectorStock.add(opcion);
+        }
+        consultarStock();
+    }
+
+    function consultarStock() {
+        const producto = catalogo.productos.find((juego) => juego.id === selectorStock.value);
+        stockConsultado = producto?.stock;
+        unidadesStock.value = stockConsultado ?? "";
+        unidadesStock.disabled = !producto;
+        document.querySelector("#stock-form button").disabled = !producto;
+        avisoStock.textContent = producto ? "" : "Agrega un juego al catálogo para gestionar su stock.";
+    }
+
+    selectorStock.addEventListener("change", consultarStock);
+    document.getElementById("stock-form").addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        try {
+            catalogo.ajustarStock(selectorStock.value, stockConsultado, unidadesStock.valueAsNumber);
+            mostrarCatalogo();
+            avisoStock.textContent = "Inventario actualizado.";
+        } catch (error) {
+            mostrarCatalogo();
+            avisoStock.textContent = error instanceof DOMException ? "No se pudo guardar el inventario." : error.message;
+        }
+    });
 
     // Reutilizar el formulario y conservar el identificador durante la edición
     function abrirFormulario(producto) {
@@ -56,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mostrarCatalogo() {
         const productos = catalogo.productos;
+        mostrarInventario(productos);
         lista.replaceChildren();
         document.getElementById("product-count").textContent = `Juegos en el catálogo: ${productos.length}.`;
         for (const producto of productos) {

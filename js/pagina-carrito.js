@@ -43,6 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
             subtotal.textContent = carrito.formatearPrecio(producto.precio * unidades);
         }
 
+        cantidad.max = producto.stock;
+        const disponibilidad = document.createElement("small");
+        disponibilidad.className = "d-block text-muted";
+        disponibilidad.textContent = producto.stock ? `Disponibles: ${producto.stock}` : "Agotado";
+        cantidad.after(disponibilidad);
         mostrarCantidad(cantidadGuardada);
 
         // Conservar la última cantidad válida si el campo está vacío o es inválido
@@ -54,7 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            carrito.actualizarCantidad(producto.id, unidades);
+            if (!carrito.actualizarCantidad(producto.id, unidades)) {
+                window.location.reload();
+                return;
+            }
             cantidadGuardada = unidades;
             mostrarCantidad(unidades);
             actualizarResumen();
@@ -93,6 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        const invalida = filas.querySelector("input:invalid");
+        if (invalida) {
+            errorCompra.textContent = "Ajusta las cantidades disponibles o elimina los juegos agotados.";
+            invalida.focus();
+            return;
+        }
         carritoRevisado = JSON.stringify(carrito.obtenerCarrito());
         const importe = carrito.formatearPrecio(carrito.calcularTotal());
         const etiqueta = unidades === 1 ? "unidad" : "unidades";

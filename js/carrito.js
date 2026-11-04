@@ -120,7 +120,32 @@ const TurnoExtraCarrito = {
     ],
 
     get productos() {
-        return this.leerEstado().productos ?? this.catalogoInicial;
+        return this.catalogoConStock(this.leerEstado());
+    },
+
+    // Asignar existencias de demostración a los juegos anteriores al inventario
+    catalogoConStock(estado) {
+        return (estado.productos ?? this.catalogoInicial).map((producto) => ({
+            ...producto, stock: producto.stock ?? 10
+        }));
+    },
+
+    // Evitar sobrescribir una venta o un ajuste posterior a la consulta
+    ajustarStock(id, anterior, unidades) {
+        if (!TurnoExtraSesion.tieneRol("administrador")) {
+            throw new Error("Necesitas una sesión de administración.");
+        }
+        if (!Number.isSafeInteger(unidades) || unidades < 0) {
+            throw new Error("Ingresa una cantidad entera igual o mayor que cero.");
+        }
+        const estado = this.leerEstado();
+        estado.productos = this.catalogoConStock(estado);
+        const producto = estado.productos.find((juego) => juego.id === id);
+        if (!producto || producto.stock !== anterior) {
+            throw new Error("El inventario cambió. Revisa las existencias antes de guardar.");
+        }
+        producto.stock = unidades;
+        localStorage.setItem(this.storageKey, JSON.stringify(estado));
     },
 
     // Guardar el catálogo y retirar del carrito los juegos eliminados
@@ -129,20 +154,20 @@ const TurnoExtraCarrito = {
             throw new Error("Necesitas una sesión de administración.");
         }
         const estado = this.leerEstado();
-        const productos = [...(estado.productos ?? this.catalogoInicial)];
+        const productos = this.catalogoConStock(estado);
         if (original) {
             const indice = productos.findIndex((p) => p.id === original.id);
             if (JSON.stringify(productos[indice]) !== JSON.stringify(original)) {
                 throw new Error("El producto cambió. Vuelve a abrirlo desde el catálogo.");
             }
             if (nuevo) {
-                productos[indice] = nuevo;
+                productos[indice] = { ...nuevo, stock: original.stock };
             } else {
                 productos.splice(indice, 1);
                 estado.carrito = estado.carrito.filter((p) => p.id !== original.id);
             }
         } else {
-            productos.push(nuevo);
+            productos.push({ ...nuevo, stock: 0 });
         }
         estado.productos = productos;
         localStorage.setItem(this.storageKey, JSON.stringify(estado));
@@ -185,11 +210,16 @@ const TurnoExtraCarrito = {
             return false;
         }
 
+        estado.productos = this.catalogoConStock(estado);
         const juegos = estado.carrito.map(({ id, cantidad }) => {
-            const producto = this.productos.find((juego) => juego.id === id);
+            const producto = estado.productos.find((juego) => juego.id === id);
             if (!producto || !Number.isSafeInteger(cantidad) || cantidad < 1) {
                 throw new Error("Hay un juego o una cantidad inválida en el carrito.");
             }
+            if (cantidad > producto.stock) {
+                throw new Error(`Stock insuficiente para ${producto.nombre}: quedan ${producto.stock}.`);
+            }
+            producto.stock -= cantidad;
             return { nombre: producto.nombre, precio: producto.precio, cantidad };
         });
 
@@ -230,6 +260,9 @@ const TurnoExtraCarrito = {
             (item) => item.id === productId
         );
 
+        if ((existingProduct?.cantidad ?? 0) >= product.stock) {
+            return false;
+        }
         if (existingProduct) {
             existingProduct.cantidad++;
         } else {
@@ -269,8 +302,13 @@ const TurnoExtraCarrito = {
             return;
         }
 
+        const juego = this.productos.find((item) => item.id === productId);
+        if (!juego || cantidad > juego.stock) {
+            return false;
+        }
         product.cantidad = cantidad;
         this.guardarCarrito(cart);
+        return true;
     },
 
     // Calcular el total de la compra
@@ -339,6 +377,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.textContent = originalText;
                     button.disabled = false;
                 }, 1200);
+            } else {
+                alert("No hay más unidades disponibles para agregar al carrito.");
             }
         });
     });

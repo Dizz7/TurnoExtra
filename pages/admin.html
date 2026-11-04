@@ -134,7 +134,7 @@
                 <section class="h-100 bg-white border rounded-4 p-4">
                     <h2 class="h4 fw-bold">Inventario</h2>
                     <p>Unidades disponibles por juego.</p>
-                    <span class="badge text-bg-light">Pendiente de implementación</span>
+                    <a class="btn-primary" href="#inventario">Gestionar inventario</a>
                 </section>
             </div>
             <div class="col-md-4">
@@ -197,6 +197,23 @@
                     </div>
                 </li>
             </template>
+        </section>
+        <!-- Consulta y ajuste de existencias por juego -->
+        <section id="inventario" class="mt-5" aria-labelledby="inventory-title">
+            <h2 id="inventory-title" class="h3 fw-bold">Inventario</h2>
+            <p>Selecciona un juego para consultar o ajustar sus unidades disponibles.</p>
+            <form id="stock-form" class="row g-3 align-items-end bg-white border rounded-4 p-3">
+                <label class="col-md-5">Juego
+                    <select id="stock-product" class="form-select" required></select>
+                </label>
+                <label class="col-md-4">Unidades disponibles
+                    <input id="stock-units" class="form-control" type="number" min="0" step="1" required>
+                </label>
+                <div class="col-md-3">
+                    <button class="btn btn-dark rounded-pill" type="submit">Guardar stock</button>
+                </div>
+            </form>
+            <p id="stock-message" class="mt-2" role="status"></p>
         </section>
     </main>
 
