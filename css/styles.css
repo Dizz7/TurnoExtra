@@ -701,6 +701,74 @@ img.imagen-wingspan {
 
 
 
+/* ====================
+   INICIO DE SESIÓN
+   ==================== */
+
+/* Enlaces del formulario */
+.auth-link {
+    color: var(--coral); /* color del enlace */
+    font-weight: 900; /* grosor de fuente */
+}
+
+.auth-link:hover {
+    color: #D95F50; /* color del enlace al pasar el cursor */
+    text-decoration: underline; /* subrayado al pasar el cursor */
+}
+
+/* Enlace inferior de registro */
+.auth-footer {
+    margin-top: 25px; /* espacio superior */
+    margin-bottom: 0; /* elimina margen inferior */
+    color: var(--muted); /* color secundario */
+    text-align: center; /* texto centrado */
+}
+
+/* Contenedor de cuentas de demostración */
+.demo-accounts {
+    margin-top: 25px; /* espacio superior */
+    padding: 25px; /* espacio interno */
+    background: var(--lavender); /* color de fondo lila */
+    border-radius: var(--radius); /* bordes redondeados */
+}
+
+.demo-accounts h3 {
+    font-size: 20px; /* tamaño de fuente */
+    font-weight: 900; /* grosor de fuente */
+    margin-bottom: 8px; /* espacio inferior */
+}
+
+.demo-accounts > p {
+    color: var(--muted); /* color secundario */
+    font-size: 14px; /* tamaño de fuente */
+    margin-bottom: 20px; /* espacio inferior */
+}
+
+/* Tarjeta de cada cuenta ficticia */
+.demo-account {
+    display: flex; /* distribución flexible */
+    flex-direction: column; /* elementos ordenados verticalmente */
+    gap: 8px; /* espacio entre elementos */
+    height: 100%; /* ocupa toda la altura del contenedor */
+    padding: 15px; /* espacio interno */
+    background: white; /* color de fondo */
+    border-radius: 12px; /* bordes redondeados */
+}
+
+.demo-account strong {
+    color: var(--dark); /* color principal */
+}
+
+.demo-account span,
+.demo-account code {
+    font-size: 13px; /* tamaño de fuente */
+    overflow-wrap: anywhere; /* permite que el texto se divida en cualquier punto */
+}
+
+.demo-account code {
+    color: var(--coral); /* color del texto en código */
+}
+
 
 
 
