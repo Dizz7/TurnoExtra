@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const subtotal = fila.querySelector(".subtotal");
         const eliminar = fila.querySelector("button");
 
+        // Usar la misma portada que en el catálogo de juegos
+        fila.querySelector(".cart-cover").src = producto.imagen;
         fila.querySelector(".game-name").textContent = producto.nombre;
         fila.querySelector(".unit-price").textContent = carrito.formatearPrecio(producto.precio);
         cantidad.setAttribute("aria-label", "Cantidad de " + producto.nombre);

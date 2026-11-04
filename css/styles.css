@@ -1029,3 +1029,105 @@ img.imagen-wingspan {
         border-bottom: 1px solid #EDEBE5; /* línea divisoria inferior */
     }
 }
+
+/* ====================
+   CARRITO DE COMPRAS
+   ==================== */
+
+/* Ancho de lectura y tarjeta que agrupa los juegos */
+.cart-page {
+    max-width: 1040px; /* acerca los precios y controles al nombre del juego */
+}
+
+.cart-page .cart-panel {
+    overflow: hidden; /* recorta el encabezado y el resumen en las esquinas */
+    background: white; /* separa la tarjeta del fondo crema */
+    border: 1px solid var(--sage); /* delimita el detalle con verde suave */
+    border-radius: var(--radius); /* conserva el radio de las tarjetas del catálogo */
+    box-shadow: 0 12px 32px rgb(25 52 45 / 7%); /* da profundidad al listado */
+}
+
+/* Encabezados, filas y portadas del catálogo */
+.cart-page .table {
+    --bs-table-color: var(--dark); /* aplica el verde oscuro a los textos */
+    --bs-table-border-color: var(--sage); /* separa las filas con líneas suaves */
+}
+
+.cart-page .table > :not(caption) > * > * {
+    padding: 1rem 1.25rem; /* deja espacio alrededor de los datos y controles */
+}
+
+.cart-page thead th {
+    --bs-table-bg: var(--sage); /* distingue los títulos de las columnas */
+    font-size: .88rem; /* reserva la mayor jerarquía para los juegos */
+}
+
+.cart-page .cart-cover {
+    object-fit: contain; /* muestra la portada completa de cada caja */
+    background: var(--cream); /* enmarca las imágenes transparentes */
+    border-radius: 12px; /* suaviza las esquinas de las miniaturas */
+    padding: 4px; /* separa la caja de su marco */
+}
+
+.cart-page .quantity {
+    width: 5rem; /* limita el ancho del campo al espacio que necesita la cantidad */
+    border-radius: 10px; /* acompaña las formas redondeadas del catálogo */
+}
+
+.cart-page .cart-label {
+    display: none; /* en escritorio los títulos ya están en el encabezado */
+}
+
+/* Franja inferior con el acceso al catálogo y el total de la compra */
+.cart-page .cart-summary {
+    display: flex; /* coloca el enlace y el total en la misma franja */
+    flex-wrap: wrap; /* permite que el total baje de línea en celulares */
+    justify-content: space-between; /* sitúa el importe al final de la fila */
+    align-items: center; /* alinea el enlace y el precio por el centro */
+    gap: 1rem; /* separa los elementos cuando el espacio es reducido */
+    padding: 1.25rem; /* da aire al resumen de la compra */
+    background: var(--dark); /* destaca el cierre de la tarjeta */
+    color: var(--cream); /* mantiene el texto legible sobre el verde */
+}
+
+.cart-page #cart-total {
+    margin-left: .5rem; /* separa la cifra de su etiqueta */
+    font-size: 1.5rem; /* destaca el importe final */
+    color: var(--yellow); /* resalta la cifra con el amarillo del sitio */
+}
+
+/* En pantallas pequeñas cada juego ocupa un bloque con sus propias etiquetas */
+@media (max-width: 767.98px) {
+    .cart-page thead {
+        position: absolute; /* mantiene los encabezados disponibles para lectores de pantalla */
+        clip-path: inset(50%); /* oculta los títulos que se repiten en cada bloque */
+    }
+
+    .cart-page :is(table, tbody) {
+        display: block; /* permite distribuir cada fila a todo el ancho */
+    }
+
+    .cart-page tbody tr {
+        display: grid; /* ordena precio, cantidad y subtotal bajo la portada */
+        grid-template-columns: repeat(3, minmax(0, 1fr)); /* reparte el ancho sin desplazar la página */
+        gap: .75rem; /* separa los datos de cada juego */
+        padding: 1rem; /* crea un margen interior para el bloque */
+        border-bottom: 1px solid var(--sage); /* distingue un juego del siguiente */
+    }
+
+    .cart-page .table tbody tr > * {
+        padding: 0; /* evita duplicar el espacio interior de la fila */
+        border: 0; /* deja una sola división por juego */
+    }
+
+    .cart-page tbody th,
+    .cart-page tbody td:last-child {
+        grid-column: 1 / -1; /* da una línea propia al nombre y al botón de eliminar */
+    }
+
+    .cart-page .cart-label {
+        display: block; /* identifica cada valor sin depender de la cabecera */
+        color: var(--muted); /* diferencia la etiqueta del importe */
+        font-size: .8rem; /* mantiene compactos los títulos de cada bloque */
+    }
+}

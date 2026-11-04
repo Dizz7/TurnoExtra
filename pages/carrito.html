@@ -115,19 +115,21 @@
         </nav>
     </header>
 
-    <main id="protected-content" class="container py-5 d-none">
-        <h1>Carrito</h1>
+    <main id="protected-content" class="container cart-page py-5 d-none">
+        <p class="eyebrow mb-1">Tu próxima partida</p>
+        <h1 class="display-5 fw-bold mb-4">Mi carrito</h1>
 
         <!-- Mensaje para un carrito sin juegos -->
-        <div id="empty-cart" hidden>
-            <p>Tu carrito está vacío.</p>
+        <div id="empty-cart" class="cart-panel text-center p-5" hidden>
+            <p class="h4 fw-bold">Tu carrito está vacío.</p>
+            <p>Elige el primer juego para tu próxima partida.</p>
             <a class="btn-primary" href="estrategia.html">Explorar juegos de estrategia</a>
         </div>
 
         <!-- Detalle de los juegos seleccionados -->
-        <div id="cart-detail" hidden>
+        <div id="cart-detail" class="cart-panel" hidden>
             <div class="table-responsive">
-                <table class="table align-middle">
+                <table class="table align-middle mb-0">
                     <caption class="visually-hidden">Juegos en tu carrito</caption>
                     <thead>
                         <tr>
@@ -141,20 +143,29 @@
                     <tbody id="cart-items"></tbody>
                 </table>
             </div>
-            <p class="fs-5 fw-bold" aria-live="polite">Total: <span id="cart-total"></span></p>
+            <div class="cart-summary">
+                <a class="text-decoration-underline" href="estrategia.html">Seguir explorando juegos</a>
+                <p class="m-0" aria-live="polite">Total del carrito <strong id="cart-total"></strong></p>
+            </div>
         </div>
 
         <!-- Fila que se completa para cada juego del carrito -->
         <template id="cart-row">
             <tr>
-                <th scope="row" class="game-name"></th>
-                <td class="unit-price"></td>
+                <th scope="row">
+                    <div class="d-flex align-items-center gap-3">
+                        <img class="cart-cover" alt="" width="64" height="64">
+                        <span class="game-name"></span>
+                    </div>
+                </th>
+                <td><span class="cart-label">Precio</span><span class="unit-price"></span></td>
                 <td>
+                    <span class="cart-label">Cantidad</span>
                     <input type="number" min="1" step="1" required class="form-control quantity">
                 </td>
-                <td class="subtotal"></td>
+                <td><span class="cart-label">Subtotal</span><strong class="subtotal"></strong></td>
                 <td>
-                    <button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3">Eliminar</button>
                 </td>
             </tr>
         </template>
