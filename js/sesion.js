@@ -10,11 +10,14 @@ const TurnoExtraSesion = {
     // Clave utilizada en sessionStorage
     storageKey: "turnoextra_session",
 
+    claveCuentas: "turnoextra_cuentas",
+
     // Guardar los datos básicos del usuario
     iniciarSesion(user) {
         const session = {
             email: user.email,
-            role: user.role
+            role: user.role,
+            version: user.version ?? 0
         };
 
         sessionStorage.setItem(
@@ -39,6 +42,15 @@ const TurnoExtraSesion = {
                 typeof session.email === "string" &&
                 ["cliente", "administrador"].includes(session.role)
             ) {
+                // Invalidar sesiones anteriores a un cambio de rol o desactivación
+                const directorio = localStorage.getItem(this.claveCuentas);
+                if (directorio !== null) {
+                    const cuenta = JSON.parse(directorio).find((c) => c.email === session.email);
+                    if (!cuenta?.activa || cuenta.role !== session.role || cuenta.version !== (session.version ?? 0)) {
+                        sessionStorage.removeItem(this.storageKey);
+                        return null;
+                    }
+                }
                 return session;
             }
         } catch (error) {
@@ -160,4 +172,12 @@ const TurnoExtraSesion = {
 // Actualizar navegación cuando cargue la página
 document.addEventListener("DOMContentLoaded", () => {
     TurnoExtraSesion.actualizarNavegacion();
+});
+
+// Revisar las pantallas abiertas si administración cambia el acceso de la cuenta
+window.addEventListener("storage", (evento) => {
+    if (evento.key === TurnoExtraSesion.claveCuentas &&
+        sessionStorage.getItem(TurnoExtraSesion.storageKey) && !TurnoExtraSesion.obtenerSesion()) {
+        window.location.replace(loginUrl.href);
+    }
 });

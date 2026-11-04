@@ -11,20 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("login-password");
     const formMessage = document.getElementById("login-message");
 
-    // Cuentas ficticias para demostrar los dos roles
-    const demoUsers = [
-        {
-            email: "cliente@turnoextra.cl",
-            password: "Cliente123!",
-            role: "cliente"
-        },
-        {
-            email: "admin@turnoextra.cl",
-            password: "Admin123!",
-            role: "administrador"
-        }
-    ];
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Marcar un campo según su validez
@@ -91,25 +77,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Procesar el inicio de sesión
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         if (!validateForm()) {
             return;
         }
 
-        // Buscar una cuenta de demostración coincidente
-        const user = demoUsers.find((account) =>
-            account.email === email.value.trim().toLowerCase() &&
-            account.password === password.value
-        );
+        // Validar una cuenta registrada o de demostración
+        let user;
+        try {
+            user = await TurnoExtraCuentas.autenticar(email.value, password.value);
+        } catch (error) {
+            showMessage("No se pudo consultar la cuenta en este navegador.", "error");
+            return;
+        }
 
         if (!user) {
             markField(email, false);
             markField(password, false);
 
             showMessage(
-                "El correo o la contraseña no coinciden con las cuentas de demostración.",
+                "Revisa tus credenciales y que la cuenta esté activa.",
                 "error"
             );
             return;

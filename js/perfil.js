@@ -24,17 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const formMessage = document.getElementById("profile-message");
     const restoreButton = document.getElementById("restore-profile");
 
-    // Clave utilizada para almacenar el perfil ficticio
-    const storageKey = "turnoextra_demo_profile";
-
-    // Datos iniciales de demostración
-    const defaultProfile = {
-        fullName: "Cliente TurnoExtra",
-        username: "cliente",
-        email: "cliente@turnoextra.cl",
-        birthDate: "2000-05-15",
-        address: ""
-    };
+    // Mantener el perfil y el historial asociados al correo de acceso
+    const cuenta = TurnoExtraCuentas.leer().find((c) => c.email === TurnoExtraSesion.obtenerSesion().email);
 
     // Expresión regular para el correo
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -122,38 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
         address.value = profile.address;
     }
 
-    // Cargar datos desde localStorage
-    function loadProfile() {
-        const savedProfile = localStorage.getItem(storageKey);
-
-        if (savedProfile) {
-            try {
-                const profile = JSON.parse(savedProfile);
-
-                // Comprobar que los datos tengan la estructura esperada
-                if (
-                    profile &&
-                    typeof profile.fullName === "string" &&
-                    typeof profile.username === "string" &&
-                    typeof profile.email === "string" &&
-                    typeof profile.birthDate === "string" &&
-                    typeof profile.address === "string"
-                ) {
-                    fillForm(profile);
-                    return;
-                }
-            } catch (error) {
-                console.warn(
-                    "No se pudieron interpretar los datos del perfil.",
-                    error
-                );
-            }
-        }
-
-        // Si no hay datos guardados, usar los ficticios
-        fillForm(defaultProfile);
-    }
-
     // Validar todos los campos
     function validateForm() {
         const errors = [];
@@ -225,10 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Guardar los datos ficticios en el navegador
-            localStorage.setItem(
-                storageKey,
-                JSON.stringify(updatedProfile)
-            );
+            TurnoExtraCuentas.guardarPerfil(cuenta.email, updatedProfile);
 
             showMessage(
                 "¡Tu perfil se actualizó correctamente!",
@@ -244,13 +200,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Restaurar los datos ficticios originales
     restoreButton.addEventListener("click", () => {
-        localStorage.removeItem(storageKey);
+        try {
+            TurnoExtraCuentas.guardarPerfil(cuenta.email, cuenta.inicial);
+        } catch (error) {
+            showMessage("No se pudo restaurar el perfil.", "error");
+            return;
+        }
 
-        fillForm(defaultProfile);
+        fillForm(cuenta.inicial);
         clearValidation();
 
         showMessage(
-            "Se restauraron los datos de demostración.",
+            "Se restauraron los datos iniciales de tu cuenta.",
             "success"
         );
     });
@@ -281,6 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Cargar el perfil al abrir la página
-    loadProfile();
+    fillForm(cuenta.perfil);
 
 });

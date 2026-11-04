@@ -390,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Se ejecuta cuando el usuario presiona
         el botón Crear cuenta.
     */
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
 
     // Evitar recargar la página
     event.preventDefault();
@@ -400,12 +400,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Eliminar animación si los datos son válidos
         submitButton.classList.remove("shake");
 
-        // Mostrar mensaje de éxito
-        showMessage(
-            "¡Formulario validado correctamente! " +
-            "Tus datos cumplen los requisitos de registro.",
-            "success"
-        );
+        try {
+            await TurnoExtraCuentas.registrar({
+                fullName: fullName.value.trim(), username: username.value.trim(),
+                email: email.value.trim(), birthDate: birthDate.value, address: address.value.trim()
+            }, password.value);
+            form.reset();
+            showMessage("Cuenta creada. Ya puedes iniciar sesión con tu correo y contraseña.", "success");
+        } catch (error) {
+            showMessage([error instanceof DOMException ? "No se pudo guardar la cuenta." : error.message], "error");
+        }
 
     } else {
 
