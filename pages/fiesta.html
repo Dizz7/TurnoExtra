@@ -155,108 +155,26 @@
             </div>
 
             <!-- Cuadrícula responsiva de productos con Bootstrap -->
-            <div class="row g-4 product-grid">
-
-                <!-- Juego 1: Dixit -->
+            <div class="row g-4 product-grid" data-categoria="fiesta"></div>
+            <template id="category-product">
                 <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/dixit.png"
-                             alt="Caja del juego Dixit"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Dixit</h3>
-
-                        <p>
-                            Imagina una pista para tu carta y descubre
-                            cómo la interpretan los demás.
-                            Un juego de ilustraciones e historias
-                            donde cada mirada cuenta.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$29.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="dixit">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-
-                <!-- Juego 2: Código Secreto -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/codigo-secreto.png"
-                             alt="Caja del juego Código Secreto"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Código Secreto</h3>
-
-                        <p>
-                            Conecta palabras con una sola pista
-                            y guía a tu equipo hacia sus agentes.
-                            Descifra las claves y evita al asesino
-                            para conseguir la victoria.
-                        </p>
-
-                        <div class="product-bottom">
-                            <div class="product-prices">
-                                <span class="old-price">$24.990</span>
-                                <span class="product-price">$19.992</span>
+                    <article class="product-card h-100">
+                        <div class="product-image"><img alt="" loading="lazy"></div>
+                        <div class="product-info">
+                            <h3></h3>
+                            <p></p>
+                            <div class="product-bottom">
+                                <div class="product-prices">
+                                    <span class="old-price" hidden></span>
+                                    <span class="product-price"></span>
+                                </div>
+                                <span class="product-status"></span>
                             </div>
-
-                            <span class="discount-badge">DESCUENTO 20%</span>
+                            <button type="button" class="add-to-cart">🛒 Agregar al carrito</button>
                         </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="codigo-secreto">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
+                    </article>
                 </div>
-
-                <!-- Juego 3: Just One -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/just-one.png"
-                             alt="Caja del juego Just One"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Just One</h3>
-
-                        <p>
-                            Escribe una pista para ayudar a adivinar
-                            la palabra secreta. Las pistas repetidas
-                            se eliminan, así que piensa diferente
-                            y colabora con el grupo.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$21.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="just-one">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-            </div>
+            </template>
 
             <!-- Enlace para regresar a las categorías -->
             <div class="back-navigation">
@@ -279,5 +197,7 @@
     <script src="../js/sesion.js" defer></script>
     <!-- Carrito de compras -->
     <script src="../js/carrito.js" defer></script>
+    <!-- Juegos publicados en esta categoría -->
+    <script src="../js/categoria.js" defer></script>
 </body>
 </html>

@@ -8,80 +8,145 @@ const TurnoExtraCarrito = {
 
     storageKey: "turnoextra_cart",
 
-    productos: [
+    catalogoInicial: [
         {
             id: "wingspan",
             nombre: "Wingspan",
+            categoria: "estrategia",
+            descripcion: "Atrae aves a tu reserva natural, desarrolla combinaciones estratégicas y consigue la mayor cantidad de puntos.",
             precio: 54990,
+            anterior: 0,
             imagen: "../img/juegos/wingspan.png"
         },
         {
             id: "kurruf",
             nombre: "Kurrüf",
+            categoria: "estrategia",
+            descripcion: "Explora la selva patagónica chilena y descubre cómo se conecta su biodiversidad. Un juego que te invita a mirar la naturaleza desde una perspectiva diferente.",
             precio: 25490,
+            anterior: 29990,
             imagen: "../img/juegos/kurruf.png"
         },
         {
             id: "catan",
             nombre: "Catan",
+            categoria: "estrategia",
+            descripcion: "Recolecta recursos, construye caminos y poblados, e intercambia materiales para conquistar la isla de Catan.",
             precio: 39990,
+            anterior: 0,
             imagen: "../img/juegos/catan.png"
         },
         {
             id: "exploding-kittens",
             nombre: "Exploding Kittens",
+            categoria: "familiares",
+            descripcion: "Roba cartas, esquiva a los gatos explosivos y usa tus mejores trucos para seguir en juego. Cada turno puede traer una sorpresa.",
             precio: 19990,
+            anterior: 0,
             imagen: "../img/juegos/exploding-kittens.png"
         },
         {
             id: "dobble",
             nombre: "Dobble",
+            categoria: "familiares",
+            descripcion: "Encuentra el símbolo que se repite entre dos cartas antes que los demás. Pon a prueba tu atención y tus reflejos en cada partida.",
             precio: 11992,
+            anterior: 14990,
             imagen: "../img/juegos/dobble.png"
         },
         {
             id: "sushi-go",
             nombre: "Sushi Go!",
+            categoria: "familiares",
+            descripcion: "Elige tus platos favoritos y pasa las cartas para crear la mejor combinación de sushi. Reúne puntos y prepara un menú ganador.",
             precio: 16990,
+            anterior: 0,
             imagen: "../img/juegos/sushi-go.png"
         },
         {
             id: "story-cubes",
             nombre: "Story Cubes",
+            categoria: "creatividad",
+            descripcion: "Lanza los dados y conecta sus imágenes para inventar una historia. Personajes, lugares y aventuras cobran vida con tu imaginación.",
             precio: 12990,
+            anterior: 0,
             imagen: "../img/juegos/story-cubes.png"
         },
         {
             id: "pictionary",
             nombre: "Pictionary",
+            categoria: "creatividad",
+            descripcion: "Convierte palabras en dibujos y ayuda a tu equipo a adivinarlas antes de que termine el tiempo. ¡Cada trazo puede ser la pista clave!",
             precio: 19992,
+            anterior: 24990,
             imagen: "../img/juegos/pictionary.png"
         },
         {
             id: "telestrations",
             nombre: "Telestrations",
+            categoria: "creatividad",
+            descripcion: "Dibuja, pasa tu cuaderno y descubre cómo interpretan tu idea los demás. Las palabras se transforman en dibujos y los malentendidos en risas.",
             precio: 27990,
+            anterior: 0,
             imagen: "../img/juegos/telestrations.png"
         },
         {
             id: "dixit",
             nombre: "Dixit",
+            categoria: "fiesta",
+            descripcion: "Imagina una pista para tu carta y descubre cómo la interpretan los demás. Un juego de ilustraciones e historias donde cada mirada cuenta.",
             precio: 29990,
+            anterior: 0,
             imagen: "../img/juegos/dixit.png"
         },
         {
             id: "codigo-secreto",
             nombre: "Código Secreto",
+            categoria: "fiesta",
+            descripcion: "Conecta palabras con una sola pista y guía a tu equipo hacia sus agentes. Descifra las claves y evita al asesino para conseguir la victoria.",
             precio: 19992,
+            anterior: 24990,
             imagen: "../img/juegos/codigo-secreto.png"
         },
         {
             id: "just-one",
             nombre: "Just One",
+            categoria: "fiesta",
+            descripcion: "Escribe una pista para ayudar a adivinar la palabra secreta. Las pistas repetidas se eliminan, así que piensa diferente y colabora con el grupo.",
             precio: 21990,
+            anterior: 0,
             imagen: "../img/juegos/just-one.png"
         }
     ],
+
+    get productos() {
+        return this.leerEstado().productos ?? this.catalogoInicial;
+    },
+
+    // Guardar el catálogo y retirar del carrito los juegos eliminados
+    modificarProducto(original, nuevo) {
+        if (!TurnoExtraSesion.tieneRol("administrador")) {
+            throw new Error("Necesitas una sesión de administración.");
+        }
+        const estado = this.leerEstado();
+        const productos = [...(estado.productos ?? this.catalogoInicial)];
+        if (original) {
+            const indice = productos.findIndex((p) => p.id === original.id);
+            if (JSON.stringify(productos[indice]) !== JSON.stringify(original)) {
+                throw new Error("El producto cambió. Vuelve a abrirlo desde el catálogo.");
+            }
+            if (nuevo) {
+                productos[indice] = nuevo;
+            } else {
+                productos.splice(indice, 1);
+                estado.carrito = estado.carrito.filter((p) => p.id !== original.id);
+            }
+        } else {
+            productos.push(nuevo);
+        }
+        estado.productos = productos;
+        localStorage.setItem(this.storageKey, JSON.stringify(estado));
+    },
 
     // Leer también los carritos creados antes de incorporar el historial
     leerEstado() {

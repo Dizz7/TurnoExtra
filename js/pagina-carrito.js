@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const carrito = TurnoExtraCarrito;
+    const catalogoVisible = JSON.stringify(carrito.productos);
     const filas = document.getElementById("cart-items");
     const plantilla = document.getElementById("cart-row");
     const detalle = document.getElementById("cart-detail");
@@ -81,6 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Revisar el número de unidades y el importe antes de confirmar
     document.getElementById("checkout").addEventListener("click", () => {
+        // Revisar los precios si administración modificó el catálogo en otra pestaña
+        if (catalogoVisible !== JSON.stringify(carrito.productos)) {
+            window.location.reload();
+            return;
+        }
         const unidades = carrito.contarProductos();
         if (!unidades) {
             window.location.reload();
@@ -103,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         dialogo.close();
         try {
-            if (!carrito.confirmarCompra(carritoRevisado)) {
+            if (catalogoVisible !== JSON.stringify(carrito.productos) || !carrito.confirmarCompra(carritoRevisado)) {
                 window.location.reload();
                 return;
             }

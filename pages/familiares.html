@@ -153,108 +153,26 @@
             </div>
 
             <!-- Cuadrícula responsiva de productos con Bootstrap -->
-            <div class="row g-4 product-grid">
-
-                <!-- Juego 1: Exploding Kittens -->
+            <div class="row g-4 product-grid" data-categoria="familiares"></div>
+            <template id="category-product">
                 <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/exploding-kittens.png"
-                             alt="Caja del juego Exploding Kittens"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Exploding Kittens</h3>
-
-                        <p>
-                            Roba cartas, esquiva a los gatos explosivos
-                            y usa tus mejores trucos para seguir en juego.
-                            Cada turno puede traer una sorpresa.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$19.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="exploding-kittens">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-
-                <!-- Juego 2: Dobble -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/dobble.png"
-                             alt="Caja del juego Dobble"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Dobble</h3>
-
-                        <p>
-                            Encuentra el símbolo que se repite entre
-                            dos cartas antes que los demás.
-                            Pon a prueba tu atención y tus reflejos
-                            en cada partida.
-                        </p>
-
-                        <div class="product-bottom">
-                            <div class="product-prices">
-                                <span class="old-price">$14.990</span>
-                                <span class="product-price">$11.992</span>
+                    <article class="product-card h-100">
+                        <div class="product-image"><img alt="" loading="lazy"></div>
+                        <div class="product-info">
+                            <h3></h3>
+                            <p></p>
+                            <div class="product-bottom">
+                                <div class="product-prices">
+                                    <span class="old-price" hidden></span>
+                                    <span class="product-price"></span>
+                                </div>
+                                <span class="product-status"></span>
                             </div>
-
-                            <span class="discount-badge">DESCUENTO 20%</span>
+                            <button type="button" class="add-to-cart">🛒 Agregar al carrito</button>
                         </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="dobble">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
+                    </article>
                 </div>
-
-                <!-- Juego 3: Sushi Go! -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/sushi-go.png"
-                             alt="Caja del juego Sushi Go!"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Sushi Go!</h3>
-
-                        <p>
-                            Elige tus platos favoritos y pasa las cartas
-                            para crear la mejor combinación de sushi.
-                            Reúne puntos y prepara un menú ganador.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$16.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="sushi-go">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-
-                
-            </div>
+            </template>
 
             <!-- Enlace para regresar a las categorías -->
             <div class="back-navigation">
@@ -277,5 +195,7 @@
     <script src="../js/sesion.js" defer></script>
     <!-- Carrito de compras -->
     <script src="../js/carrito.js" defer></script>
+    <!-- Juegos publicados en esta categoría -->
+    <script src="../js/categoria.js" defer></script>
 </body>
 </html>

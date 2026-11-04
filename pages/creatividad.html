@@ -153,109 +153,26 @@
             </div>
 
             <!-- Cuadrícula responsiva de productos con Bootstrap -->
-            <div class="row g-4 product-grid">
-
-                <!-- Juego 1: Story Cubes -->
+            <div class="row g-4 product-grid" data-categoria="creatividad"></div>
+            <template id="category-product">
                 <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/story-cubes.png"
-                             alt="Caja del juego Story Cubes"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Story Cubes</h3>
-
-                        <p>
-                            Lanza los dados y conecta sus imágenes
-                            para inventar una historia.
-                            Personajes, lugares y aventuras
-                            cobran vida con tu imaginación.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$12.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="story-cubes">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-
-                <!-- Juego 2: Pictionary -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/pictionary.png"
-                             alt="Caja del juego Pictionary"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Pictionary</h3>
-
-                        <p>
-                            Convierte palabras en dibujos y ayuda
-                            a tu equipo a adivinarlas antes
-                            de que termine el tiempo.
-                            ¡Cada trazo puede ser la pista clave!
-                        </p>
-
-                        <div class="product-bottom">
-                            <div class="product-prices">
-                                <span class="old-price">$24.990</span>
-                                <span class="product-price">$19.992</span>
+                    <article class="product-card h-100">
+                        <div class="product-image"><img alt="" loading="lazy"></div>
+                        <div class="product-info">
+                            <h3></h3>
+                            <p></p>
+                            <div class="product-bottom">
+                                <div class="product-prices">
+                                    <span class="old-price" hidden></span>
+                                    <span class="product-price"></span>
+                                </div>
+                                <span class="product-status"></span>
                             </div>
-
-                            <span class="discount-badge">DESCUENTO 20%</span>
+                            <button type="button" class="add-to-cart">🛒 Agregar al carrito</button>
                         </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="pictionary">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
+                    </article>
                 </div>
-
-                <!-- Juego 3: Telestrations -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/telestrations.png"
-                             alt="Caja del juego Telestrations"
-                             loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Telestrations</h3>
-
-                        <p>
-                            Dibuja, pasa tu cuaderno y descubre
-                            cómo interpretan tu idea los demás.
-                            Las palabras se transforman en dibujos
-                            y los malentendidos en risas.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$27.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="telestrations">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-
-            </div>
+            </template>
 
             <!-- Enlace para regresar a las categorías -->
             <div class="back-navigation">
@@ -278,5 +195,7 @@
     <script src="../js/sesion.js" defer></script>
     <!-- Carrito de compras -->
     <script src="../js/carrito.js" defer></script>
+    <!-- Juegos publicados en esta categoría -->
+    <script src="../js/categoria.js" defer></script>
 </body>
 </html>

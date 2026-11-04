@@ -127,7 +127,7 @@
                 <section class="h-100 bg-white border rounded-4 p-4">
                     <h2 class="h4 fw-bold">Productos</h2>
                     <p id="product-count"></p>
-                    <a class="btn-primary" href="#catalogo">Consultar catálogo</a>
+                    <a class="btn-primary" href="#catalogo">Gestionar productos</a>
                 </section>
             </div>
             <div class="col-md-4">
@@ -150,6 +150,37 @@
         <section id="catalogo" aria-labelledby="catalog-title">
             <h2 id="catalog-title" class="h3 fw-bold">Catálogo de juegos</h2>
             <p>Precios de venta actuales en pesos chilenos.</p>
+            <button type="button" id="new-product" class="btn btn-dark rounded-pill mb-3">Agregar juego</button>
+            <p id="product-message" role="status"></p>
+
+            <!-- Formulario de creación y edición de juegos -->
+            <form id="product-form" class="bg-white border rounded-4 p-4 mb-4" hidden>
+                <h3 id="form-title" class="h5 fw-bold"></h3>
+                <div class="row g-3">
+                        <label class="col-md-6">Nombre
+                            <input name="nombre" class="form-control" required maxlength="100">
+                        </label>
+                        <label class="col-md-6">Categoría
+                            <select name="categoria" class="form-select"><option value="estrategia">Estrategia</option><option value="familiares">Familiares</option><option value="creatividad">Creatividad</option><option value="fiesta">Fiesta</option></select>
+                        </label>
+                        <label class="col-md-6">Precio de venta ($)
+                            <input name="precio" class="form-control" type="number" min="1" max="999999999" step="1" required>
+                        </label>
+                        <label class="col-md-6">Precio anterior ($, opcional)
+                            <input name="anterior" class="form-control" type="number" min="1" max="999999999" step="1">
+                        </label>
+                        <label class="col-md-6">Portada (URL https o ruta ../img/, opcional)
+                            <input name="imagen" class="form-control" maxlength="2048">
+                        </label>
+                        <label class="col-md-6">Descripción
+                            <textarea name="descripcion" class="form-control" rows="2" maxlength="600" required></textarea>
+                        </label>
+                </div>
+                <div class="d-flex gap-2 mt-3">
+                    <button type="submit" class="btn btn-dark rounded-pill">Guardar juego</button>
+                    <button id="cancel-product" type="button" class="btn btn-outline-secondary rounded-pill">Cancelar</button>
+                </div>
+            </form>
             <ul id="admin-products" class="row g-3 list-unstyled"></ul>
             <template id="admin-product">
                 <li class="col-sm-6 col-lg-4">
@@ -158,6 +189,10 @@
                         <div>
                             <h3 class="h6 fw-bold mb-1"></h3>
                             <span class="product-price"></span>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+                                <button type="button" class="edit-product btn btn-outline-dark btn-sm rounded-pill">Editar</button>
+                                <button type="button" class="delete-product btn btn-outline-danger btn-sm rounded-pill">Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </li>

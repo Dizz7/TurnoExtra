@@ -154,108 +154,26 @@
             </div>
 
             <!-- Cuadrícula responsiva de productos con Bootstrap -->
-            <div class="row g-4 product-grid">
-
-                <!-- Juego 1: Wingspan -->
-
+            <div class="row g-4 product-grid" data-categoria="estrategia"></div>
+            <template id="category-product">
                 <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img class="imagen-wingspan" src="../img/juegos/wingspan.png"
-                            alt="Caja del juego Wingspan"
-                            loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Wingspan</h3>
-
-                        <p>
-                            Atrae aves a tu reserva natural,
-                            desarrolla combinaciones estratégicas
-                            y consigue la mayor cantidad de puntos.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$54.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="wingspan">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>
-
-                <!-- Juego 2: Kurruf -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/kurruf.png"
-                            alt="Caja del juego Kurrüf"
-                            loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Kurrüf</h3>
-
-                        <p>
-                            Explora la selva patagónica chilena
-                            y descubre cómo se conecta su biodiversidad.
-                            Un juego que te invita a mirar la naturaleza
-                            desde una perspectiva diferente.
-                        </p>
-
-                        <div class="product-bottom">
-                            <div class="product-prices">
-                                <span class="old-price">$29.990</span>
-                                <span class="product-price">$25.490</span>
+                    <article class="product-card h-100">
+                        <div class="product-image"><img alt="" loading="lazy"></div>
+                        <div class="product-info">
+                            <h3></h3>
+                            <p></p>
+                            <div class="product-bottom">
+                                <div class="product-prices">
+                                    <span class="old-price" hidden></span>
+                                    <span class="product-price"></span>
+                                </div>
+                                <span class="product-status"></span>
                             </div>
-
-                            <span class="discount-badge">DESCUENTO 15%</span>
+                            <button type="button" class="add-to-cart">🛒 Agregar al carrito</button>
                         </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="kurruf">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
+                    </article>
                 </div>
-
-                <!-- Juego 3: Catan -->
-                <div class="col-12 col-md-6 col-lg-4">
-                <article class="product-card h-100">
-                    <div class="product-image">
-                        <img src="../img/juegos/catan.png"
-                            alt="Caja del juego Catan"
-                            loading="lazy">
-                    </div>
-
-                    <div class="product-info">
-                        <h3>Catan</h3>
-
-                        <p>
-                            Recolecta recursos, construye caminos
-                            y poblados, e intercambia materiales
-                            para conquistar la isla de Catan.
-                        </p>
-
-                        <div class="product-bottom">
-                            <span class="product-price">$39.990</span>
-                            <span class="product-status">Sin descuento</span>
-                        </div>
-                        <button type="button"
-                                class="add-to-cart"
-                                data-product-id="catan">
-                            🛒 Agregar al carrito
-                        </button>
-                    </div>
-                </article>
-                </div>  
-
-            </div>
+            </template>
 
             <!-- Enlace para regresar a las categorías -->
             <div class="back-navigation">
@@ -281,5 +199,7 @@
 
     <!-- Carrito de compras -->
     <script src="../js/carrito.js" defer></script>
+    <!-- Juegos publicados en esta categoría -->
+    <script src="../js/categoria.js" defer></script>
 </body>
 </html>
