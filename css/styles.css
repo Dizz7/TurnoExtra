@@ -772,6 +772,19 @@ img.imagen-wingspan {
 
 
 
+/* Botón de cierre de sesión integrado al menú */
+.header .session-logout {
+    background: none; /* sin color de fondo */
+    border: none; /* sin borde */
+    cursor: pointer; /* cursor de mano al pasar el ratón */
+    font-family: inherit; /* mantiene la fuente del contenedor */
+    font-weight: 800; /* grosor de fuente */
+    color: var(--dark); /* color del texto */
+}
+
+.header .session-logout:hover {
+    color: var(--coral); /* color del texto al pasar el cursor */
+}
 
 
 

@@ -118,6 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Guardar la sesión ficticia sin almacenar la contraseña
         TurnoExtraSesion.iniciarSesion(user);
 
+        // Actualizar las opciones del menú después de iniciar sesión
+        TurnoExtraSesion.actualizarNavegacion();
+
         // Mostrar el rol identificado
         const roleName = user.role === "administrador"
             ? "administrador"
