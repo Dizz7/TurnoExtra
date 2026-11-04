@@ -117,12 +117,55 @@
 
     <main id="protected-content" class="container py-5 d-none">
         <h1>Carrito</h1>
+
+        <!-- Mensaje para un carrito sin juegos -->
+        <div id="empty-cart" hidden>
+            <p>Tu carrito está vacío.</p>
+            <a class="btn-primary" href="estrategia.html">Explorar juegos de estrategia</a>
+        </div>
+
+        <!-- Detalle de los juegos seleccionados -->
+        <div id="cart-detail" hidden>
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <caption class="visually-hidden">Juegos en tu carrito</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Juego</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col"><span class="visually-hidden">Acciones</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items"></tbody>
+                </table>
+            </div>
+            <p class="fs-5 fw-bold" aria-live="polite">Total: <span id="cart-total"></span></p>
+        </div>
+
+        <!-- Fila que se completa para cada juego del carrito -->
+        <template id="cart-row">
+            <tr>
+                <th scope="row" class="game-name"></th>
+                <td class="unit-price"></td>
+                <td>
+                    <input type="number" min="1" step="1" required class="form-control quantity">
+                </td>
+                <td class="subtotal"></td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                </td>
+            </tr>
+        </template>
     </main>
-    <!-- Bootstrap 5 -->
+    <!-- JavaScript de Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Validación de inicio de sesión -->
     <script src="../js/sesion.js" defer></script>
-    <!-- Validación de carrito -->
+    <!-- Productos, cantidades y precios del carrito -->
+    <script src="../js/carrito.js" defer></script>
+    <!-- Vista del carrito y controles de cantidad -->
     <script src="../js/pagina-carrito.js" defer></script>
 </body>
 </html>
