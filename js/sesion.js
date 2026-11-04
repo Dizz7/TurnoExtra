@@ -3,6 +3,8 @@
     Proyecto académico sin backend.
 */
 
+const loginUrl = new URL("../pages/login.html", document.currentScript.src);
+
 const TurnoExtraSesion = {
 
     // Clave utilizada en sessionStorage
@@ -84,7 +86,7 @@ const TurnoExtraSesion = {
     // Cerrar la sesión
     cerrarSesion() {
         sessionStorage.removeItem(this.storageKey);
-        window.location.href = "login.html";
+        window.location.href = loginUrl.href;
     },
 
     

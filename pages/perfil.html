@@ -36,33 +36,76 @@
             <div class="collapse navbar-collapse" id="menuPrincipal">
                 <ul class="navbar-nav nav-links ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Inicio</a>
+                        <a class="nav-link" href="../index.html">
+                            Inicio
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="estrategia.html">Estrategia</a>
+                        <a class="nav-link" href="estrategia.html">
+                            Estrategia
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="familiares.html">Familiares</a>
+                        <a class="nav-link" href="familiares.html">
+                            Familiares
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="creatividad.html">Creatividad</a>
+                        <a class="nav-link" href="creatividad.html">
+                            Creatividad
+                        </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="fiesta.html">Fiesta</a>
+                        <a class="nav-link" href="fiesta.html">
+                            Fiesta
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="registro.html">Registro</a>
+
+                    <!-- Opciones para visitantes -->
+                    <li class="nav-item" data-session="guest">
+                        <a class="nav-link" href="registro.html">
+                            Registro
+                        </a>
                     </li>
-                    <li class="nav-item">
+
+                    <li class="nav-item" data-session="guest">
                         <a class="nav-link" href="login.html">
                             Iniciar sesión
                         </a>
                     </li>
-                    <li class="nav-item">
+
+                    <!-- Carrito exclusivo del cliente -->
+                    <li class="nav-item d-none" data-session="cliente">
+                        <a class="nav-link" href="carrito.html">
+                            🛒 Carrito
+                        </a>
+                    </li>
+
+                    <!-- Perfil de usuarios autenticados -->
+                    <li class="nav-item d-none" data-session="profile">
                         <a class="nav-link" href="perfil.html" aria-current="page">
                             Mi perfil
                         </a>
                     </li>
+
+                    <!-- Administración -->
+                    <li class="nav-item d-none" data-session="admin">
+                        <a class="nav-link" href="admin.html">
+                            Administración
+                        </a>
+                    </li>
+
+                    <!-- Cerrar sesión -->
+                    <li class="nav-item d-none" data-session="logout">
+                        <button type="button" class="nav-link session-logout">
+                            Cerrar sesión
+                        </button>
+                    </li>
+
                 </ul>
             </div>
         </nav>

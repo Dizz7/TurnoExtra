@@ -35,8 +35,6 @@
 
             <div class="collapse navbar-collapse" id="menuPrincipal">
                 <ul class="navbar-nav nav-links ms-auto">
-
-                    <!-- Enlaces generales -->
                     <li class="nav-item">
                         <a class="nav-link" href="../index.html">
                             Inicio
@@ -75,21 +73,26 @@
                     </li>
 
                     <li class="nav-item" data-session="guest">
-                        <a class="nav-link"
-                           href="login.html"
-                           aria-current="page">
+                        <a class="nav-link" href="login.html" aria-current="page">
                             Iniciar sesión
                         </a>
                     </li>
 
-                    <!-- Opciones para usuarios autenticados -->
+                    <!-- Carrito exclusivo del cliente -->
+                    <li class="nav-item d-none" data-session="cliente">
+                        <a class="nav-link" href="carrito.html">
+                            🛒 Carrito
+                        </a>
+                    </li>
+
+                    <!-- Perfil de usuarios autenticados -->
                     <li class="nav-item d-none" data-session="profile">
                         <a class="nav-link" href="perfil.html">
                             Mi perfil
                         </a>
                     </li>
 
-                    <!-- Opción exclusiva del administrador -->
+                    <!-- Administración -->
                     <li class="nav-item d-none" data-session="admin">
                         <a class="nav-link" href="admin.html">
                             Administración
@@ -98,8 +101,7 @@
 
                     <!-- Cerrar sesión -->
                     <li class="nav-item d-none" data-session="logout">
-                        <button type="button"
-                                class="nav-link session-logout">
+                        <button type="button" class="nav-link session-logout">
                             Cerrar sesión
                         </button>
                     </li>
